@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		456CA14B24DD3A91003CD702 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CA14A24DD3A91003CD702 /* AppDelegate.swift */; };
+		456CA14D24DD3A91003CD702 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CA14C24DD3A91003CD702 /* SceneDelegate.swift */; };
+		456CA14F24DD3A91003CD702 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CA14E24DD3A91003CD702 /* ViewController.swift */; };
+		456CA15224DD3A91003CD702 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456CA15024DD3A91003CD702 /* Main.storyboard */; };
+		456CA15424DD3A92003CD702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456CA15324DD3A92003CD702 /* Assets.xcassets */; };
+		456CA15724DD3A92003CD702 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456CA15524DD3A92003CD702 /* LaunchScreen.storyboard */; };
+		456CA16224DD3A92003CD702 /* ABC_Vehicle_ServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CA16124DD3A92003CD702 /* ABC_Vehicle_ServicesTests.swift */; };
+		456CA16D24DD3A92003CD702 /* ABC_Vehicle_ServicesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CA16C24DD3A92003CD702 /* ABC_Vehicle_ServicesUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		456CA15E24DD3A92003CD702 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 456CA13F24DD3A91003CD702 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 456CA14624DD3A91003CD702;
+			remoteInfo = "ABC Vehicle Services";
+		};
+		456CA16924DD3A92003CD702 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 456CA13F24DD3A91003CD702 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 456CA14624DD3A91003CD702;
+			remoteInfo = "ABC Vehicle Services";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		456CA14724DD3A91003CD702 /* ABC Vehicle Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ABC Vehicle Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		456CA14A24DD3A91003CD702 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		456CA14C24DD3A91003CD702 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		456CA14E24DD3A91003CD702 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		456CA15124DD3A91003CD702 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		456CA15324DD3A92003CD702 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		456CA15624DD3A92003CD702 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		456CA15824DD3A92003CD702 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		456CA15D24DD3A92003CD702 /* ABC Vehicle ServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ABC Vehicle ServicesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		456CA16124DD3A92003CD702 /* ABC_Vehicle_ServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABC_Vehicle_ServicesTests.swift; sourceTree = "<group>"; };
+		456CA16324DD3A92003CD702 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		456CA16824DD3A92003CD702 /* ABC Vehicle ServicesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ABC Vehicle ServicesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		456CA16C24DD3A92003CD702 /* ABC_Vehicle_ServicesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABC_Vehicle_ServicesUITests.swift; sourceTree = "<group>"; };
+		456CA16E24DD3A92003CD702 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		456CA14424DD3A91003CD702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		456CA15A24DD3A92003CD702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		456CA16524DD3A92003CD702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		456CA13E24DD3A91003CD702 = {
+			isa = PBXGroup;
+			children = (
+				456CA14924DD3A91003CD702 /* ABC Vehicle Services */,
+				456CA16024DD3A92003CD702 /* ABC Vehicle ServicesTests */,
+				456CA16B24DD3A92003CD702 /* ABC Vehicle ServicesUITests */,
+				456CA14824DD3A91003CD702 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		456CA14824DD3A91003CD702 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				456CA14724DD3A91003CD702 /* ABC Vehicle Services.app */,
+				456CA15D24DD3A92003CD702 /* ABC Vehicle ServicesTests.xctest */,
+				456CA16824DD3A92003CD702 /* ABC Vehicle ServicesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		456CA14924DD3A91003CD702 /* ABC Vehicle Services */ = {
+			isa = PBXGroup;
+			children = (
+				456CA14A24DD3A91003CD702 /* AppDelegate.swift */,
+				456CA14C24DD3A91003CD702 /* SceneDelegate.swift */,
+				456CA14E24DD3A91003CD702 /* ViewController.swift */,
+				456CA15024DD3A91003CD702 /* Main.storyboard */,
+				456CA15324DD3A92003CD702 /* Assets.xcassets */,
+				456CA15524DD3A92003CD702 /* LaunchScreen.storyboard */,
+				456CA15824DD3A92003CD702 /* Info.plist */,
+			);
+			path = "ABC Vehicle Services";
+			sourceTree = "<group>";
+		};
+		456CA16024DD3A92003CD702 /* ABC Vehicle ServicesTests */ = {
+			isa = PBXGroup;
+			children = (
+				456CA16124DD3A92003CD702 /* ABC_Vehicle_ServicesTests.swift */,
+				456CA16324DD3A92003CD702 /* Info.plist */,
+			);
+			path = "ABC Vehicle ServicesTests";
+			sourceTree = "<group>";
+		};
+		456CA16B24DD3A92003CD702 /* ABC Vehicle ServicesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				456CA16C24DD3A92003CD702 /* ABC_Vehicle_ServicesUITests.swift */,
+				456CA16E24DD3A92003CD702 /* Info.plist */,
+			);
+			path = "ABC Vehicle ServicesUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		456CA14624DD3A91003CD702 /* ABC Vehicle Services */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 456CA17124DD3A92003CD702 /* Build configuration list for PBXNativeTarget "ABC Vehicle Services" */;
+			buildPhases = (
+				456CA14324DD3A91003CD702 /* Sources */,
+				456CA14424DD3A91003CD702 /* Frameworks */,
+				456CA14524DD3A91003CD702 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ABC Vehicle Services";
+			productName = "ABC Vehicle Services";
+			productReference = 456CA14724DD3A91003CD702 /* ABC Vehicle Services.app */;
+			productType = "com.apple.product-type.application";
+		};
+		456CA15C24DD3A92003CD702 /* ABC Vehicle ServicesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 456CA17424DD3A92003CD702 /* Build configuration list for PBXNativeTarget "ABC Vehicle ServicesTests" */;
+			buildPhases = (
+				456CA15924DD3A92003CD702 /* Sources */,
+				456CA15A24DD3A92003CD702 /* Frameworks */,
+				456CA15B24DD3A92003CD702 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				456CA15F24DD3A92003CD702 /* PBXTargetDependency */,
+			);
+			name = "ABC Vehicle ServicesTests";
+			productName = "ABC Vehicle ServicesTests";
+			productReference = 456CA15D24DD3A92003CD702 /* ABC Vehicle ServicesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		456CA16724DD3A92003CD702 /* ABC Vehicle ServicesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 456CA17724DD3A92003CD702 /* Build configuration list for PBXNativeTarget "ABC Vehicle ServicesUITests" */;
+			buildPhases = (
+				456CA16424DD3A92003CD702 /* Sources */,
+				456CA16524DD3A92003CD702 /* Frameworks */,
+				456CA16624DD3A92003CD702 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				456CA16A24DD3A92003CD702 /* PBXTargetDependency */,
+			);
+			name = "ABC Vehicle ServicesUITests";
+			productName = "ABC Vehicle ServicesUITests";
+			productReference = 456CA16824DD3A92003CD702 /* ABC Vehicle ServicesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		456CA13F24DD3A91003CD702 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Ankur Agarwal";
+				TargetAttributes = {
+					456CA14624DD3A91003CD702 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					456CA15C24DD3A92003CD702 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 456CA14624DD3A91003CD702;
+					};
+					456CA16724DD3A92003CD702 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 456CA14624DD3A91003CD702;
+					};
+				};
+			};
+			buildConfigurationList = 456CA14224DD3A91003CD702 /* Build configuration list for PBXProject "ABC Vehicle Services" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 456CA13E24DD3A91003CD702;
+			productRefGroup = 456CA14824DD3A91003CD702 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				456CA14624DD3A91003CD702 /* ABC Vehicle Services */,
+				456CA15C24DD3A92003CD702 /* ABC Vehicle ServicesTests */,
+				456CA16724DD3A92003CD702 /* ABC Vehicle ServicesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		456CA14524DD3A91003CD702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				456CA15724DD3A92003CD702 /* LaunchScreen.storyboard in Resources */,
+				456CA15424DD3A92003CD702 /* Assets.xcassets in Resources */,
+				456CA15224DD3A91003CD702 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		456CA15B24DD3A92003CD702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		456CA16624DD3A92003CD702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		456CA14324DD3A91003CD702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				456CA14F24DD3A91003CD702 /* ViewController.swift in Sources */,
+				456CA14B24DD3A91003CD702 /* AppDelegate.swift in Sources */,
+				456CA14D24DD3A91003CD702 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		456CA15924DD3A92003CD702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				456CA16224DD3A92003CD702 /* ABC_Vehicle_ServicesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		456CA16424DD3A92003CD702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				456CA16D24DD3A92003CD702 /* ABC_Vehicle_ServicesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		456CA15F24DD3A92003CD702 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 456CA14624DD3A91003CD702 /* ABC Vehicle Services */;
+			targetProxy = 456CA15E24DD3A92003CD702 /* PBXContainerItemProxy */;
+		};
+		456CA16A24DD3A92003CD702 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 456CA14624DD3A91003CD702 /* ABC Vehicle Services */;
+			targetProxy = 456CA16924DD3A92003CD702 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		456CA15024DD3A91003CD702 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				456CA15124DD3A91003CD702 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		456CA15524DD3A92003CD702 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				456CA15624DD3A92003CD702 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		456CA16F24DD3A92003CD702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		456CA17024DD3A92003CD702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		456CA17224DD3A92003CD702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ABC Vehicle Services/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ankur-agarwal.ABC-Vehicle-Services";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		456CA17324DD3A92003CD702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ABC Vehicle Services/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ankur-agarwal.ABC-Vehicle-Services";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		456CA17524DD3A92003CD702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ABC Vehicle ServicesTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ankur-agarwal.ABC-Vehicle-ServicesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ABC Vehicle Services.app/ABC Vehicle Services";
+			};
+			name = Debug;
+		};
+		456CA17624DD3A92003CD702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ABC Vehicle ServicesTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ankur-agarwal.ABC-Vehicle-ServicesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ABC Vehicle Services.app/ABC Vehicle Services";
+			};
+			name = Release;
+		};
+		456CA17824DD3A92003CD702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ABC Vehicle ServicesUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ankur-agarwal.ABC-Vehicle-ServicesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ABC Vehicle Services";
+			};
+			name = Debug;
+		};
+		456CA17924DD3A92003CD702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "ABC Vehicle ServicesUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ankur-agarwal.ABC-Vehicle-ServicesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ABC Vehicle Services";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		456CA14224DD3A91003CD702 /* Build configuration list for PBXProject "ABC Vehicle Services" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456CA16F24DD3A92003CD702 /* Debug */,
+				456CA17024DD3A92003CD702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		456CA17124DD3A92003CD702 /* Build configuration list for PBXNativeTarget "ABC Vehicle Services" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456CA17224DD3A92003CD702 /* Debug */,
+				456CA17324DD3A92003CD702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		456CA17424DD3A92003CD702 /* Build configuration list for PBXNativeTarget "ABC Vehicle ServicesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456CA17524DD3A92003CD702 /* Debug */,
+				456CA17624DD3A92003CD702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		456CA17724DD3A92003CD702 /* Build configuration list for PBXNativeTarget "ABC Vehicle ServicesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456CA17824DD3A92003CD702 /* Debug */,
+				456CA17924DD3A92003CD702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 456CA13F24DD3A91003CD702 /* Project object */;
+}
