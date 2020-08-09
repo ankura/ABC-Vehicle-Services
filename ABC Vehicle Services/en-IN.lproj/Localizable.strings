@@ -17,9 +17,19 @@
 "REMEMBER_ME_STR" = "Remember Me";
 "FORGOT_PASS_STR" = "Forgot Password?";
 "OR_STR"        = "OR";
+"EMAIL_EMPTY_STR" = "Email field can't empty.";
+"EMAIL_NOT_VALID_STR" = "Email is not valid.";
+"PASS_EMPTY_STR" = "Password field can't empty.";
+"PASS_NOT_VALID_STR" = "Password should be 8 characters or more.";
+"PASSCODE_USE_STR" = "Please use your Passcode";
+"PASSCODE_REQ_STR" = "Authentication required to access the secure data";
+"SOMETHING_WRONG_STR" = "Something went wrong. Please try again.";
+"AUTH_SUCCESS_STR" = "Authenticated succesfully!";
+
 
 "ALERT_TITLE_FAIL" = "Fail";
-
+"ALERT_TITLE_ERROR" = "Error";
+"ALERT_TITLE_SUCCESS" = "Success";
 
 "ALERT_OK" = "OK";
 

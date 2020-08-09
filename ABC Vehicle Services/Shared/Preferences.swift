@@ -55,4 +55,46 @@ class Preferences: NSObject {
         let value =  UserDefaults.standard.value(forKey: kUserLogin)
         return value != nil ? value as! String : ""
     }
+    
+    
+    /// Save User ID
+    /// Method to store the User ID option in Standard defautls
+    ///
+    /// - Parameter answer: yes or no
+    class func userID(value: String)
+    {
+        UserDefaults.standard.set(value, forKey: kUserId)
+        UserDefaults.standard.synchronize()
+    }
+    
+    
+    /// Return User ID
+    /// Method to return the User ID option
+    ///
+    /// - Returns : String
+    class func userIdValue() -> String? {
+        let value =  UserDefaults.standard.value(forKey: kUserId)
+        return value != nil ? value as! String : ""
+    }
+    
+    
+    /// Save MD5 Password
+    /// Method to store the MD5 Password option in Standard defautls
+    ///
+    /// - Parameter value: yes or no
+    class func MD5Password(value: String)
+    {
+        UserDefaults.standard.set(value, forKey: kMD5Password)
+        UserDefaults.standard.synchronize()
+    }
+    
+    
+    /// Return MD5Password
+    /// Method to return the MD5Password option
+    ///
+    /// - Returns : String
+    class func MD5PasswordValue() -> String? {
+        let value =  UserDefaults.standard.value(forKey: kMD5Password)
+        return value != nil ? value as! String : ""
+    }
 }

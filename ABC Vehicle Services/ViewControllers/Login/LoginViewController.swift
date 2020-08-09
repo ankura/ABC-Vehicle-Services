@@ -97,6 +97,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let textField =  UITextField()
         textField.placeholder = LocalizationKey.email_place_str.string
         textField.font = UIFont.systemFont(ofSize: 15)
+        textField.textContentType = .emailAddress
+        textField.autocapitalizationType = .none
         textField.borderStyle = .none
         textField.autocorrectionType = .no
         textField.keyboardType = .emailAddress
@@ -256,6 +258,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         // Automatically sign in the user.
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.receiveToggleAuthUINotification(_:)), name: NSNotification.Name(rawValue: "ToggleAuthUINotification"), object: nil)
     }
     
     
@@ -484,27 +488,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in
 
-            let orient = UIApplication.shared.statusBarOrientation
-
-            switch orient {
-
-            case .portrait, .portraitUpsideDown :
-
-                print("Portrait")
-
-            case .landscapeLeft,.landscapeRight :
-
-                print("Landscape")
-
-            default:
-
-                print("Anything But Portrait")
-            }
-
-            }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
+        }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
                 //refresh view once rotation is completed not in will transition as it returns incorrect frame size.Refresh here
                 self.drawUI()
-
         })
         super.viewWillTransition(to: size, with: coordinator)
 
@@ -546,12 +532,92 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func loginTapped() {
         Common.LogDebug("Loggin Tappped")
+        
+        var msg: String = ""
+        if(!self.emailTextField.hasText) {
+            msg = LocalizationKey.email_empty_str.string
+        } else if(!self.emailTextField.text!.isValidEmail()) {
+            msg = LocalizationKey.email_notvalid_str.string
+        } else if(!self.passwordTextField.hasText) {
+            msg = LocalizationKey.pass_empty_str.string
+        } else if(self.passwordTextField.text!.count < 8) {
+            msg = LocalizationKey.pass_notvalid_str.string
+        }
+        
+        if(msg.isEmpty) {
+            if(self.rememberMeCheckBox.isChecked) {
+                Preferences.rememberMe(answer: "yes")
+            } else {
+                Preferences.rememberMe(answer: "no")
+            }
+            Preferences.LoginMe(answer: "yes")
+            Preferences.userID(value:self.emailTextField.text!)
+            Preferences.MD5Password(value: Common.md5(self.passwordTextField.text!))
+            self.showHomeVC()
+            
+        } else {
+            
+            self.showAlert(title: LocalizationKey.alert_title_error.string, message: msg, actionTitle: LocalizationKey.alert_ok.string)
+        }
+        
     }
     
     @objc func googleLoginTapped() {
         Common.LogDebug("Google Loggin Tappped")
         GIDSignIn.sharedInstance().signIn()
+    }
+    
 
+    @objc func receiveToggleAuthUINotification(_ notification: NSNotification) {
+      if notification.name.rawValue == "ToggleAuthUINotification" {
+        if notification.userInfo != nil {
+          guard let userInfo = notification.userInfo as? [String:String] else { return }
+            
+            if(userInfo["statusText"] != nil) {
+                
+                Preferences.rememberMe(answer: "yes")
+                Preferences.LoginMe(answer: "yes")
+                self.showHomeVC()
+                
+            } else {
+                Common.logOutResetValue()
+                var msg: String = ""
+                if(userInfo["errorText"] != nil) {
+                    msg = userInfo["errorText"]!
+                } else {
+                    msg = LocalizationKey.something_wrong_str.string
+                }
+                
+                self.showAlert(title: LocalizationKey.alert_title_error.string, message: msg, actionTitle: LocalizationKey.alert_ok.string)
+                
+            }
+        }
+      }
+    }
+    
+    
+    func showHomeVC() {
+        
+        // move to home screen
+        // custom navigation bar color
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationBarAppearace.barTintColor = kBrandColor
+        
+        // initialisation of navigation controller and home vc
+        let navigationController = UINavigationController()
+        let homeVC = HomeViewController()// self.storyboard?.instantiateViewController(withIdentifier: "Mvs_Home_vc")as! HomeViewController
+        navigationController.addChild(homeVC)
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+    }
+    
+    
+    
+    deinit {
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ToggleAuthUINotification"), object: nil)
     }
     
 

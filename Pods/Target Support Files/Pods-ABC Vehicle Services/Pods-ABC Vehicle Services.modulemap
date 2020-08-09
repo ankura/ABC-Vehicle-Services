@@ -1,4 +1,4 @@
-framework module Pods_ABC_Vehicle_Services {
+module Pods_ABC_Vehicle_Services {
   umbrella header "Pods-ABC Vehicle Services-umbrella.h"
 
   export *

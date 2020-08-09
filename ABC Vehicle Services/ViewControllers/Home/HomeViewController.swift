@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = kBackgroundColor
         
-        self.navigationItem.title = "My List"
+        //self.navigationItem.title = "My List"
         
         
     }

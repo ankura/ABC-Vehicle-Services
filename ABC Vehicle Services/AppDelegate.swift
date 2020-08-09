@@ -51,23 +51,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
-      if let error = error {
-        if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-          print("The user has not signed in before or they have since signed out.")
-        } else {
-          print("\(error.localizedDescription)")
+        var msg: String = ""
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                Common.LogDebug("The user has not signed in before or they have since signed out.")
+                msg = "The user has not signed in before or they have since signed out."
+            } else {
+                Common.LogDebug("\(error.localizedDescription)")
+                msg = error.localizedDescription
+            }
+            
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["errorText": "\(msg)"])
+            
+            return
         }
-        return
-      }
         
-      // Perform any operations on signed in user here.
-      let userId = user.userID                  // For client-side use only!
-      let idToken = user.authentication.idToken // Safe to send to the server
-      let fullName = user.profile.name
-      let givenName = user.profile.givenName
-      let familyName = user.profile.familyName
-      let email = user.profile.email
-      // ...
+        // Perform any operations on signed in user here.
+        /*let userId = user.userID                  // For client-side use only!
+        let idToken = user.authentication.idToken // Safe to send to the server
+        let givenName = user.profile.givenName
+        let familyName = user.profile.familyName*/
+        let fullName = user.profile.name
+        let email = user.profile.email
+        // ...
+        Preferences.userID(value:email!)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["statusText": "Signed in user:\n\(fullName!)"])
     }
     
     
@@ -75,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
               withError error: Error!) {
       // Perform any operations when the user disconnects from app here.
       // ...
+        //NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["statusText": "User has disconnected."])
     }
 
 

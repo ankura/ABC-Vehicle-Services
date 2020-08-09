@@ -12,7 +12,8 @@ import UIKit
 // constants for User Defaults
 let kLoginIsRemember    = "isRemember"
 let kUserLogin          = "isLogin"
-
+let kUserId             = "User_ID"
+let kMD5Password        = "userPassword"
 
 // enums for log category
 enum logCategory: Int
@@ -43,13 +44,21 @@ enum LocalizationKey: String {
     case remember_me_str = "REMEMBER_ME_STR"
     case forgot_pass_str = "FORGOT_PASS_STR"
     case or_str = "OR_STR"
+    case email_empty_str = "EMAIL_EMPTY_STR"
+    case email_notvalid_str = "EMAIL_NOT_VALID_STR"
+    case pass_empty_str = "PASS_EMPTY_STR"
+    case pass_notvalid_str = "PASS_NOT_VALID_STR"
+    case passcode_use_str = "PASSCODE_USE_STR"
+    case passcode_req_str = "PASSCODE_REQ_STR"
+    case something_wrong_str = "SOMETHING_WRONG_STR"
+    case auth_success_str =  "AUTH_SUCCESS_STR"
     
     
     
     case alert_title_fail = "ALERT_TITLE_FAIL"
-    
+    case alert_title_error = "ALERT_TITLE_ERROR"
     case alert_ok = "ALERT_OK"
-    
+    case alert_title_success = "ALERT_TITLE_SUCCESS"
     
     
     case img_splash_main = "SPLASH_MAIN_IMG"

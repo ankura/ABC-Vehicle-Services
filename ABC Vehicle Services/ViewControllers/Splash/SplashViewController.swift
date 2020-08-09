@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import LocalAuthentication
+import Darwin
 
 class SplashViewController: UIViewController {
     
@@ -30,25 +32,24 @@ class SplashViewController: UIViewController {
         super.viewDidAppear(true)
         sleep(2)
         
-        // custom navigation bar color
-        /*let navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.tintColor = .white
-        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationBarAppearace.barTintColor = kNavBrandColor
-        
-        // initialisation of navigation controller and home vc
-        let navigationController = UINavigationController()*/
-        
         // Do any additional setup after loading the view.
         if Preferences.isLoginMe() == "yes"
         {
-            //let vc = self.storyboard?.instantiateViewController(withIdentifier: "Mvs_Home_vc")as! Mvs_Home_vc
-            //self.navigationController?.pushViewController(vc, animated: false)
+            if(Preferences.isRememberMe() == "yes") {
+                
+                self.authenticationWithTouchID()
+                
+            } else {
+                
+                let loginVC =  self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")as! LoginViewController
+                UIApplication.shared.windows.first?.rootViewController = loginVC
+                UIApplication.shared.windows.first?.makeKeyAndVisible()
+                
+            }
             
         } else {
             
             let loginVC =  self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")as! LoginViewController
-            //navigationController.addChild(loginVC)
             UIApplication.shared.windows.first?.rootViewController = loginVC
             UIApplication.shared.windows.first?.makeKeyAndVisible()
             
@@ -72,6 +73,75 @@ class SplashViewController: UIViewController {
         splashTextImg.heightAnchor.constraint(lessThanOrEqualTo: self.view.heightAnchor, multiplier: 0.20).isActive = true
         
         
+    }
+    
+    func showHomeVC() {
+        
+        // custom navigation bar color
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationBarAppearace.barTintColor = kBrandColor
+        
+        // initialisation of navigation controller and home vc
+        let navigationController = UINavigationController()
+        let homeVC = HomeViewController()// self.storyboard?.instantiateViewController(withIdentifier: "Mvs_Home_vc")as! HomeViewController
+        navigationController.addChild(homeVC)
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+    }
+    
+    
+    func authenticationWithTouchID() {
+        let localAuthenticationContext = LAContext()
+        localAuthenticationContext.localizedFallbackTitle = LocalizationKey.passcode_use_str.string
+        
+        var authorizationError: NSError?
+        let reason = LocalizationKey.passcode_req_str.string
+        
+        if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authorizationError) {
+            
+            localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, evaluateError in
+                
+                if success {
+                    DispatchQueue.main.async() {
+                        
+                        self.showAlert(title: LocalizationKey.alert_title_success.string, message: LocalizationKey.auth_success_str.string, actionTitle: LocalizationKey.alert_ok.string, completion: { (success) -> Void in
+                        if success {
+                            self.showHomeVC()
+                        }})
+                    }
+                    
+                } else {
+                    // Failed to authenticate
+                    guard let error = evaluateError else {
+                        return
+                    }
+                    Common.LogDebug("\(error.localizedDescription)")
+                    DispatchQueue.main.async() {
+                    self.showAlert(title: LocalizationKey.alert_title_error.string, message: error.localizedDescription, actionTitle: LocalizationKey.alert_ok.string, completion: { (success) -> Void in
+                        if success {
+                            exit(0)
+                        }})
+                    }
+                }
+            }
+        } else {
+            
+            guard let error = authorizationError else {
+                return
+            }
+            Common.LogDebug("\(error.localizedDescription)")
+            
+            DispatchQueue.main.async() {
+            self.showAlert(title: LocalizationKey.alert_title_error.string, message: error.localizedDescription, actionTitle: LocalizationKey.alert_ok.string, completion: { (success) -> Void in
+                if success {
+                    self.showHomeVC()
+                }})
+            }
+            
+        }
     }
 
 }
