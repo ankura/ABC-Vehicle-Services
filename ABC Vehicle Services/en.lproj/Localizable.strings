@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  ABC Vehicle Services
+
+  Created by Ankur Agarwal on 07/08/20.
+  Copyright © 2020 Ankur Agarwal. All rights reserved.
+ //  Class to have localised strings for En
+*/
+
+"TIMEOUT_STR" = "Server is not responding or timed-out. Please try again.";
+"WELCOME_STR" = "Welcome";
+"LOGIN_STR"   = "Login";
+"EMAILID_STR" = "Email ID";
+"EMAIL_PLACE_STR" = "Enter your email id";
+"PASS_STR"    = "Password";
+"PASS_PLACE_STR" = "Enter your password";
+"REMEMBER_ME_STR" = "Remember Me";
+"FORGOT_PASS_STR" = "Forgot Password?";
+"OR_STR"        = "OR";
+
+"ALERT_TITLE_FAIL" = "Fail";
+
+
+"ALERT_OK" = "OK";
+
+
+
+"SPLASH_MAIN_IMG" = "splash";
+"SPLASH_IMG" = "splash_text";
+"GICON_LOGIN_IMG" = "google_login";

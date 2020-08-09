@@ -1,0 +1,77 @@
+//
+//  SplashViewController.swift
+//  ABC Vehicle Services
+//
+//  Created by Ankur Agarwal on 07/08/20.
+//  Copyright © 2020 Ankur Agarwal. All rights reserved.
+//  Splash View Controller
+
+import UIKit
+import AVFoundation
+
+class SplashViewController: UIViewController {
+    
+    @IBOutlet var splashMainImg: UIImageView!
+    @IBOutlet var splashTextImg: UIImageView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = kBackgroundColor
+        
+        splashMainImg.image = UIImage(named: LocalizationKey.img_splash_main.string)
+        splashTextImg.image = UIImage(named: LocalizationKey.img_splash.string)
+        
+        drawUI()
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        sleep(2)
+        
+        // custom navigation bar color
+        /*let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationBarAppearace.barTintColor = kNavBrandColor
+        
+        // initialisation of navigation controller and home vc
+        let navigationController = UINavigationController()*/
+        
+        // Do any additional setup after loading the view.
+        if Preferences.isLoginMe() == "yes"
+        {
+            //let vc = self.storyboard?.instantiateViewController(withIdentifier: "Mvs_Home_vc")as! Mvs_Home_vc
+            //self.navigationController?.pushViewController(vc, animated: false)
+            
+        } else {
+            
+            let loginVC =  self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")as! LoginViewController
+            //navigationController.addChild(loginVC)
+            UIApplication.shared.windows.first?.rootViewController = loginVC
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            
+            
+        }
+        
+    }
+    
+    func drawUI() {
+        
+        let guide = self.view.safeAreaLayoutGuide
+        
+        splashMainImg.translatesAutoresizingMaskIntoConstraints = false
+        splashMainImg.centerXAnchor.constraint(equalTo: guide.centerXAnchor).isActive = true
+        splashMainImg.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.60).isActive = true
+        splashMainImg.centerYAnchor.constraint(greaterThanOrEqualTo: guide.centerYAnchor, constant: -(splashMainImg.image?.size.height)!/4).isActive = true
+        
+        splashTextImg.translatesAutoresizingMaskIntoConstraints = false
+        splashTextImg.topAnchor.constraint(equalTo: splashMainImg.bottomAnchor,constant: 0).isActive = true
+        splashTextImg.centerXAnchor.constraint(equalTo: guide.centerXAnchor).isActive = true
+        splashTextImg.heightAnchor.constraint(lessThanOrEqualTo: self.view.heightAnchor, multiplier: 0.20).isActive = true
+        
+        
+    }
+
+}
