@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
               withError error: Error!) {
       // Perform any operations when the user disconnects from app here.
       // ...
-        //NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["statusText": "User has disconnected."])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["errorText": "User has disconnected."])
     }
 
 

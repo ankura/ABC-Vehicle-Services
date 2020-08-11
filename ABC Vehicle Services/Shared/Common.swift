@@ -330,6 +330,37 @@ extension UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
+    /// Show alert
+    /// - Parameters:
+    ///   - title: title to be shown on alert
+    ///   - message: message to be shown on alert
+    ///   - actionTitle: action title
+    ///    - secondTitle: second title
+    ///   - completion: completion handler
+    /// - Returns: returns true on completion
+    func showAlert(title: String, message: String, actionTitle: String, secondTitle: String, completion: @escaping (Bool,Int) -> ()) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        let titleFont = [NSAttributedString.Key.font: UIFont(name: "ArialHebrew-Bold", size: 18.0)!]
+        let messageFont = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14.0)!]
+        
+        let titleAttrString = NSMutableAttributedString(string: title, attributes: titleFont)
+        let messageAttrString = NSMutableAttributedString(string: message, attributes: messageFont)
+        alert.setValue(titleAttrString, forKey: "attributedTitle")
+        alert.setValue(messageAttrString, forKey: "attributedMessage")
+        
+        alert.addAction(UIAlertAction(title: actionTitle, style: UIAlertAction.Style.default, handler: { _ in
+            completion(true,0)
+        }))
+        
+        alert.addAction(UIAlertAction(title: secondTitle, style: UIAlertAction.Style.default, handler: { _ in
+            completion(true,1)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 // extension of String for localisation

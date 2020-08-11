@@ -6,7 +6,6 @@ target 'ABC Vehicle Services' do
 
   # Pods for ListView
    pod 'Alamofire', '~> 4.2'
-   pod 'SnapKit', '~> 4.0.0'
    pod 'SwiftyJSON'
    pod 'Toast-Swift'
    pod 'GoogleSignIn'

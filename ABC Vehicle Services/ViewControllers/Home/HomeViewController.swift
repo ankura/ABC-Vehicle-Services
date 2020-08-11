@@ -289,8 +289,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Brake Oil", serviceItemImage: "service_break_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(11:30 am)"))
         serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Filter", serviceItemImage: "service_filter", serviceItemStatus: .in_progress_servicing, serviceItemTime: "(12:10 pm)"))
         serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Batter Check", serviceItemImage: "service_battery", serviceItemStatus: .not_started_servicing, serviceItemTime: "(01:00 pm)"))
-       // self.servicingStatusView.serviceStatus = .active_servicing
-       // self.servicingStatusView.serviceItems = serviceStatus
+        self.servicingStatusView.serviceStatus = .active_servicing
+        self.servicingStatusView.serviceItems = serviceStatus
         self.servicingStatusView.showCombindStatus()
         self.scrollView.addSubview(self.servicingStatusView)
 
@@ -371,13 +371,25 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     /// Method to handle click on menu button (left navigation)
     @objc private func menuButtonClicked() {
         
-        let notAlreadyExpanded = (currentState != .leftPanelExpanded)
-
-        if notAlreadyExpanded {
-          addLeftPanelViewController()
-        }
-
-        animateLeftPanel(shouldExpand: notAlreadyExpanded)
+        self.showAlert(title: LocalizationKey.alert_title_confirmation.string, message: LocalizationKey.logout_conf_str.string, actionTitle: LocalizationKey.alert_yes.string, secondTitle: LocalizationKey.alert_no.string, completion: { (success,val) -> Void in
+        if success {
+            if(val == 0) { // yes, go back
+                
+                Common.logOutResetValue()
+                let loginVC =  self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")as! LoginViewController
+                UIApplication.shared.windows.first?.rootViewController = loginVC
+                UIApplication.shared.windows.first?.makeKeyAndVisible()
+                
+            } else if (val == 1) { // no
+                
+                let notAlreadyExpanded = (self.currentState != .leftPanelExpanded)
+                if notAlreadyExpanded {
+                    self.addLeftPanelViewController()
+                }
+                self.animateLeftPanel(shouldExpand: notAlreadyExpanded)
+                
+            }
+        }})
     }
     
     

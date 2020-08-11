@@ -77,12 +77,16 @@ enum LocalizationKey: String {
     case in_progress_str = "IN_PROGRESS_STR"
     case completed_str = "COMPLETED_STR"
     case google_sign_issue_str = "GOOGLE_SIGN_ISSUE_STR"
+    case logout_conf_str = "LOGOUT_CONF_STR"
     
     
     case alert_title_fail = "ALERT_TITLE_FAIL"
     case alert_title_error = "ALERT_TITLE_ERROR"
     case alert_ok = "ALERT_OK"
     case alert_title_success = "ALERT_TITLE_SUCCESS"
+    case alert_title_confirmation = "ALERT_TITLE_CONFIRMATION"
+    case alert_yes = "ALERT_YES"
+    case alert_no = "ALERT_NO"
     
     
     case img_splash_main = "SPLASH_MAIN_IMG"

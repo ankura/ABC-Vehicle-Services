@@ -33,11 +33,15 @@
 "IN_PROGRESS_STR" = "In progress";
 "COMPLETED_STR" = "Completed";
 "GOOGLE_SIGN_ISSUE_STR" = "The user has not signed in before or they have since signed out.";
+"LOGOUT_CONF_STR" = "Do you want to Logout?";
 
 
 "ALERT_TITLE_FAIL" = "Fail";
 "ALERT_TITLE_ERROR" = "Error";
 "ALERT_TITLE_SUCCESS" = "Success";
+"ALERT_TITLE_CONFIRMATION" = "Confirmation";
+"ALERT_YES" = "Yes";
+"ALERT_NO" = "No";
 "ALERT_OK" = "OK";
 
 
