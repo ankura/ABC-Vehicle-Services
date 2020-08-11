@@ -69,7 +69,14 @@ enum LocalizationKey: String {
     case passcode_req_str = "PASSCODE_REQ_STR"
     case something_wrong_str = "SOMETHING_WRONG_STR"
     case auth_success_str =  "AUTH_SUCCESS_STR"
-    
+    case logout_str = "LOGOUT_STR"
+    case service_status_str = "SERVICE_STATUS_STR"
+    case estimation_str = "ESTIMATION_STR"
+    case no_service_prog_str = "NO_SERVICE_PROG_STR"
+    case not_started_str = "NOT_STARTED_STR"
+    case in_progress_str = "IN_PROGRESS_STR"
+    case completed_str = "COMPLETED_STR"
+    case google_sign_issue_str = "GOOGLE_SIGN_ISSUE_STR"
     
     
     case alert_title_fail = "ALERT_TITLE_FAIL"
@@ -81,6 +88,10 @@ enum LocalizationKey: String {
     case img_splash_main = "SPLASH_MAIN_IMG"
     case img_splash = "SPLASH_IMG"
     case img_google_login = "GICON_LOGIN_IMG"
+    case img_service_status = "SERVICE_STATUS_IMG"
+    case img_book_service = "BOOK_SERVICE_IMG"
+    case img_menu = "MENU_IMG"
+    case img_notification = "NOTIFICATION_IMG"
     
     
     
@@ -101,11 +112,6 @@ struct ServiceStatusItem {
     var serviceItemTime:  String?
 }
 
-let kImageColor = UIColor.init(red: 16.0/255.0, green: 191.0/255.0, blue: 212.0/255.0, alpha: 1.0)
-let kTextColor = UIColor.init(red: 255.0/255.0, green: 179.0/255.0, blue: 57.0/255.0, alpha: 1.0)
-let kOtherColor = UIColor.init(red: 238.0/255.0, green: 58.0/255.0, blue: 125.0/255.0, alpha: 1.0)
-let kLightGreenColor = UIColor.init(red: 83.0/255.0, green: 138.0/255.0, blue: 5.0/255.0, alpha: 1.0)
-
 let kBackgroundColor = UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0) // white
 let kBrandColor = UIColor.init(red: 75.0/255.0, green: 169.0/255.0, blue: 205.0/255.0, alpha: 1.0)
 //let kBrandColor = UIColor.init(red: 118.0/255.0, green: 179.0/255.0, blue: 208.0/255.0, alpha: 1.0)
@@ -113,5 +119,5 @@ let kBrandColor = UIColor.init(red: 75.0/255.0, green: 169.0/255.0, blue: 205.0/
 
 let TIMEOUT_API = 60.0
 
-let API_URL = "https://raw.githubusercontent.com/AxxessTech/Mobile-Projects/master/challenge.json"
+let API_URL = ""
 let GOOGLE_CLIENT_ID = "681109074889-e54t29usie7ttuq654p4m1dt81t6vhbp.apps.googleusercontent.com"

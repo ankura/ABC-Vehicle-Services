@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         if let error = error {
             if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
                 Common.LogDebug("The user has not signed in before or they have since signed out.")
-                msg = "The user has not signed in before or they have since signed out."
+                msg = LocalizationKey.google_sign_issue_str.string
             } else {
                 Common.LogDebug("\(error.localizedDescription)")
                 msg = error.localizedDescription

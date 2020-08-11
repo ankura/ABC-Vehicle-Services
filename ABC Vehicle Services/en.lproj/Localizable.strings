@@ -25,12 +25,19 @@
 "PASSCODE_REQ_STR" = "Authentication required to access the secure data";
 "SOMETHING_WRONG_STR" = "Something went wrong. Please try again.";
 "AUTH_SUCCESS_STR" = "Authenticated succesfully!";
+"LOGOUT_STR" = "LogOut";
+"SERVICE_STATUS_STR" = "Service Status ";
+"ESTIMATION_STR" = "(Estimated time:";
+"NO_SERVICE_PROG_STR" = "(No service in progress)";
+"NOT_STARTED_STR" = "Not Started";
+"IN_PROGRESS_STR" = "In progress";
+"COMPLETED_STR" = "Completed";
+"GOOGLE_SIGN_ISSUE_STR" = "The user has not signed in before or they have since signed out.";
 
 
 "ALERT_TITLE_FAIL" = "Fail";
 "ALERT_TITLE_ERROR" = "Error";
 "ALERT_TITLE_SUCCESS" = "Success";
-
 "ALERT_OK" = "OK";
 
 
@@ -38,3 +45,7 @@
 "SPLASH_MAIN_IMG" = "splash";
 "SPLASH_IMG" = "splash_text";
 "GICON_LOGIN_IMG" = "google_login";
+"SERVICE_STATUS_IMG" = "service_status";
+"BOOK_SERVICE_IMG" = "book_service";
+"MENU_IMG" = "menu";
+"NOTIFICATION_IMG" = "notification";

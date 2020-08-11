@@ -23,7 +23,7 @@ struct MenuItem {
   
   static func allMenuItems() -> [MenuItem] {
     return [
-      MenuItem(title: "LogOut")
+        MenuItem(title: LocalizationKey.logout_str.string)
       
     ]
   }

@@ -194,7 +194,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         
         let bookButton = UIButton()
         bookButton.backgroundColor = .clear
-        let btnImage = UIImage(named: "book_service")
+        let btnImage = UIImage(named: LocalizationKey.img_book_service.string)
         bookButton.setBackgroundImage(btnImage, for: .normal)
         bookButton.imageView?.contentMode = .scaleAspectFit
         bookButton.frame = CGRect(x: 0, y: 0, width: btnImage!.size.width, height: btnImage!.size.height)
@@ -238,13 +238,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         //self.navigationItem.title = "Home"
         
         // Create left button for navigation item
-        let leftButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(menuButtonClicked))
+        let leftButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: LocalizationKey.img_menu.string), style: .plain, target: self, action: #selector(menuButtonClicked))
         
         // Create  buttons for the navigation item.
         self.navigationItem.leftBarButtonItem = leftButton
         
         // Create right button for navigation item
-        let rightButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "notification"), style: .plain, target: self, action: #selector(notificationButtonClicked))
+        let rightButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: LocalizationKey.img_notification.string), style: .plain, target: self, action: #selector(notificationButtonClicked))
         
         // Create  buttons for the navigation item.
         self.navigationItem.rightBarButtonItem = rightButton
@@ -289,8 +289,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Brake Oil", serviceItemImage: "service_break_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(11:30 am)"))
         serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Filter", serviceItemImage: "service_filter", serviceItemStatus: .in_progress_servicing, serviceItemTime: "(12:10 pm)"))
         serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Batter Check", serviceItemImage: "service_battery", serviceItemStatus: .not_started_servicing, serviceItemTime: "(01:00 pm)"))
-        self.servicingStatusView.serviceStatus = .active_servicing
-        self.servicingStatusView.serviceItems = serviceStatus
+       // self.servicingStatusView.serviceStatus = .active_servicing
+       // self.servicingStatusView.serviceItems = serviceStatus
         self.servicingStatusView.showCombindStatus()
         self.scrollView.addSubview(self.servicingStatusView)
 

@@ -74,20 +74,20 @@ class ServicingStatusTableView: UIView, UITableViewDataSource, UITableViewDelega
     
     func showCombindStatus() {
         
-        var msg = "Service Status "
+        var msg = LocalizationKey.service_status_str.string
         
         let estimate = "6"
         
         if(serviceStatus == .active_servicing) {
-            msg += "(Estimated time: \(estimate) hrs)"
+            msg += "\(LocalizationKey.estimation_str.string) \(estimate) hrs)"
         } else {
-            msg += "(No service in progress)"
+            msg += LocalizationKey.no_service_prog_str.string
         }
         
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit // image will never be strecthed vertially or horizontally
         imgView.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
-        imgView.image = UIImage(named: "service_status")
+        imgView.image = UIImage(named: LocalizationKey.img_service_status.string)
         serviceStatusView.addSubview(imgView)
         
         var size: CGFloat = 0.0
@@ -134,9 +134,9 @@ class ServicingStatusTableView: UIView, UITableViewDataSource, UITableViewDelega
         
         if(serviceStatus == .active_servicing) {
             attributedString.setColorForText(textForAttribute: "\(estimate) hrs", withColor: kBrandColor)
-            attributedString.setFontForText(textForAttribute: "(Estimated time: \(estimate) hrs)", withFont: UIFont.systemFont(ofSize:(size-5), weight:UIFont.Weight.bold))
+            attributedString.setFontForText(textForAttribute: "\(LocalizationKey.estimation_str.string) \(estimate) hrs)", withFont: UIFont.systemFont(ofSize:(size-5), weight:UIFont.Weight.bold))
         } else {
-            attributedString.setFontForText(textForAttribute: "(No service in progress)", withFont: UIFont.systemFont(ofSize:(size-5), weight:UIFont.Weight.bold))
+            attributedString.setFontForText(textForAttribute: LocalizationKey.no_service_prog_str.string, withFont: UIFont.systemFont(ofSize:(size-5), weight:UIFont.Weight.bold))
         }
         
         mainStatuslabel.attributedText = attributedString

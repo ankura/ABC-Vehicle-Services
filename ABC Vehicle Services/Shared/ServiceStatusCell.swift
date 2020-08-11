@@ -28,15 +28,15 @@ class ServiceStatusCell: UITableViewCell {
             if let serviceStatus = serviceitem.serviceItemStatus {
                 switch serviceStatus {
                 case .not_started_servicing:
-                    serviceItemStatusLabel.text = "Not Started"
+                    serviceItemStatusLabel.text = LocalizationKey.not_started_str.string
                     serviceItemStatusLabel.textColor = .darkGray
                     break
                 case .in_progress_servicing:
-                    serviceItemStatusLabel.text = "In progress"
+                    serviceItemStatusLabel.text = LocalizationKey.in_progress_str.string
                     serviceItemStatusLabel.textColor = .red
                     break
                 case .completed_servicing:
-                    serviceItemStatusLabel.text = "Completed"
+                    serviceItemStatusLabel.text = LocalizationKey.completed_str.string
                     serviceItemStatusLabel.textColor = kBrandColor
                     break
                 }
