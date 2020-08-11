@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleSignIn
+import UserNotifications
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -32,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         window?.rootViewController  = controller
         window?.makeKeyAndVisible()
+        
+        registerForPushNotifications()
               
         return true
     }
@@ -48,6 +52,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       return GIDSignIn.sharedInstance().handle(url)
     }
     
+    
+    func registerForPushNotifications() {
+      
+        UNUserNotificationCenter.current()
+          .requestAuthorization(options: [.alert, .sound, .badge]) {
+            [weak self] granted, error in
+              
+            Common.LogDebug("Permission granted: \(granted)")
+            guard granted else { return }
+            self?.getNotificationSettings()
+        }
+        
+    }
+    
+    func getNotificationSettings() {
+      UNUserNotificationCenter.current().getNotificationSettings { settings in
+        Common.LogDebug("Notification settings: \(settings)")
+        guard settings.authorizationStatus == .authorized else { return }
+        DispatchQueue.main.async {
+          UIApplication.shared.registerForRemoteNotifications()
+        }
+      }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+      let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+      let token = tokenParts.joined()
+      Common.LogDebug("Device Token: \(token)")
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+      Common.LogDebug("Failed to register: \(error)")
+    }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
