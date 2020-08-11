@@ -464,11 +464,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         googleLoginButton.heightAnchor.constraint(equalToConstant: 40+loginButtonHt).isActive = true
 
         
-        
-        
-        
-        print(self.view.frame)
-        print(scrollView.contentSize)
         let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in
             rect = rect.union(view.frame)
         }
@@ -477,9 +472,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if(Common.isPhone() && !Common.isPotrait()) {
             val = 50.0
         }
-        print(contentRect.size)
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: (contentRect.size.height+val))
-        print(scrollView.contentSize)
     }
     
     

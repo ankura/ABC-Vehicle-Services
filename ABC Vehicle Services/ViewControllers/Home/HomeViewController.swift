@@ -29,6 +29,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     let centerPanelExpandedOffset: CGFloat = 60
     var carInfoList: Array<carInfoItem> = []
     var carModel: carInfoItem?
+    var currentServicingStatus: servicingStatus = .no_active_servicing
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -93,6 +94,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     private let lineView2: UIView = {
         let view = UIView()
         view.backgroundColor = .gray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let servicingStatusView: ServicingStatusTableView = {
+       let view = ServicingStatusTableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -220,6 +227,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     }
     
     
+    func carServicingView() {
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = kBackgroundColor
@@ -271,6 +283,16 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         self.scrollView.addSubview(self.carInfoView)
         
         self.scrollView.addSubview(self.lineView2)
+        
+        var serviceStatus: Array<ServiceStatusItem> = []
+        serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Change", serviceItemImage: "service_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(10:30 am)"))
+        serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Brake Oil", serviceItemImage: "service_break_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(11:30 am)"))
+        serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Filter", serviceItemImage: "service_filter", serviceItemStatus: .in_progress_servicing, serviceItemTime: "(12:10 pm)"))
+        serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Batter Check", serviceItemImage: "service_battery", serviceItemStatus: .not_started_servicing, serviceItemTime: "(01:00 pm)"))
+        self.servicingStatusView.serviceStatus = .active_servicing
+        self.servicingStatusView.serviceItems = serviceStatus
+        self.servicingStatusView.showCombindStatus()
+        self.scrollView.addSubview(self.servicingStatusView)
 
     }
     
@@ -314,12 +336,34 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         if(Common.isPhone()) {
             val = 12
         } else if(!Common.isPhone() && Common.isPotrait()) {
-            val = 12
+            val = 8
         }
         lineView2.topAnchor.constraint(equalTo: carInfoView.bottomAnchor, constant: 50-val).isActive = true
         lineView2.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: 10).isActive = true
         lineView2.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -10).isActive = true
         lineView2.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        servicingStatusView.topAnchor.constraint(equalTo: self.lineView2.bottomAnchor, constant: 10).isActive = true
+        servicingStatusView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: 5).isActive = true
+        servicingStatusView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -5).isActive = true
+        //servicingStatusView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
+        servicingStatusView.heightAnchor.constraint(equalToConstant: 450).isActive = true
+        servicingStatusView.reloadData()
+        
+        
+        print(self.view.frame)
+        print(scrollView.contentSize)
+        let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in
+            rect = rect.union(view.frame)
+        }
+        
+        val = 0.0
+        if(Common.isPhone() && !Common.isPotrait()) {
+            val = 70.0
+        }
+        print(contentRect.size)
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: (contentRect.size.height+val))
+        print(scrollView.contentSize)
         
     }
     
@@ -327,13 +371,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     /// Method to handle click on menu button (left navigation)
     @objc private func menuButtonClicked() {
         
-        /*let notAlreadyExpanded = (currentState != .leftPanelExpanded)
+        let notAlreadyExpanded = (currentState != .leftPanelExpanded)
 
         if notAlreadyExpanded {
           addLeftPanelViewController()
         }
 
-        animateLeftPanel(shouldExpand: notAlreadyExpanded)*/
+        animateLeftPanel(shouldExpand: notAlreadyExpanded)
     }
     
     
@@ -362,13 +406,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     
     
     func addLeftPanelViewController() {
-        guard leftViewController == nil else { return }
+        /*guard leftViewController == nil else { return }
 
       if let vc = self.leftSidePanelViewController() {
         vc.menuItems = MenuItem.allMenuItems()
         addChildSidePanelController(vc)
         leftViewController = vc
-      }
+      }*/
     }
     
     func animateLeftPanel(shouldExpand: Bool) {

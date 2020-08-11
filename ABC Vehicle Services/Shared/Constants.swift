@@ -36,6 +36,16 @@ enum slideOutState: Int {
   leftPanelExpanded
 }
 
+enum servicingStatus: Int {
+    case no_active_servicing = 0,
+    active_servicing
+}
+
+enum servicingItemStatus: Int {
+    case not_started_servicing = 0,
+    in_progress_servicing,
+    completed_servicing
+}
 
 
 // enums for localisation
@@ -82,6 +92,13 @@ enum LocalizationKey: String {
 struct carInfoItem {
     var title:String?
     var value:String?
+}
+
+struct ServiceStatusItem {
+    var serviceItemTitle: String?
+    var serviceItemImage: String?
+    var serviceItemStatus: servicingItemStatus?
+    var serviceItemTime:  String?
 }
 
 let kImageColor = UIColor.init(red: 16.0/255.0, green: 191.0/255.0, blue: 212.0/255.0, alpha: 1.0)
