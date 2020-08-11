@@ -4,7 +4,7 @@
 //
 //  Created by Ankur Agarwal on 09/08/20.
 //  Copyright © 2020 Ankur Agarwal. All rights reserved.
-//
+//  View component to show checkbox
 
 
 import UIKit

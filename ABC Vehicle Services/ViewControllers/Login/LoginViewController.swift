@@ -230,7 +230,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let googleLoginButton : UIButton = {
         // Google Button
         let gButton = UIButton()
-        gButton.layer.cornerRadius = 3
         gButton.setBackgroundImage(UIImage(named: LocalizationKey.img_google_login.string), for: .normal)
         gButton.addTarget(self, action: #selector(googleLoginTapped), for: UIControl.Event.touchUpInside)
         gButton.translatesAutoresizingMaskIntoConstraints = false
@@ -451,7 +450,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.heightAnchor.constraint(equalToConstant: 40+loginButtonHt).isActive = true
         
         
-        self.orView.removeConstraints(self.loginButton.constraints)
+        //self.orView.removeConstraints(self.loginButton.constraints)
         orView.topAnchor.constraint(equalTo: self.loginButton.bottomAnchor, constant: 40*mul).isActive = true
         orView.leadingAnchor.constraint(equalTo: self.whiteBKView.leadingAnchor, constant: 0).isActive = true
         orView.widthAnchor.constraint(equalTo: self.whiteBKView.widthAnchor).isActive = true
@@ -607,7 +606,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // initialisation of navigation controller and home vc
         let navigationController = UINavigationController()
-        let homeVC = HomeViewController()// self.storyboard?.instantiateViewController(withIdentifier: "Mvs_Home_vc")as! HomeViewController
+        let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")as! HomeViewController
         navigationController.addChild(homeVC)
         UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.makeKeyAndVisible()

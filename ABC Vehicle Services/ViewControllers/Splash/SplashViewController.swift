@@ -85,7 +85,7 @@ class SplashViewController: UIViewController {
         
         // initialisation of navigation controller and home vc
         let navigationController = UINavigationController()
-        let homeVC = HomeViewController()// self.storyboard?.instantiateViewController(withIdentifier: "Mvs_Home_vc")as! HomeViewController
+        let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")as! HomeViewController
         navigationController.addChild(homeVC)
         UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
@@ -107,10 +107,11 @@ class SplashViewController: UIViewController {
                 if success {
                     DispatchQueue.main.async() {
                         
-                        self.showAlert(title: LocalizationKey.alert_title_success.string, message: LocalizationKey.auth_success_str.string, actionTitle: LocalizationKey.alert_ok.string, completion: { (success) -> Void in
+                        self.showHomeVC()
+                        /*self.showAlert(title: LocalizationKey.alert_title_success.string, message: LocalizationKey.auth_success_str.string, actionTitle: LocalizationKey.alert_ok.string, completion: { (success) -> Void in
                         if success {
-                            self.showHomeVC()
-                        }})
+                            
+                        }})*/
                     }
                     
                 } else {

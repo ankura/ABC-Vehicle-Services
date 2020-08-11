@@ -31,6 +31,13 @@ enum logLevel: Int
 }
 
 
+enum slideOutState: Int {
+  case collapsed = 0,
+  leftPanelExpanded
+}
+
+
+
 // enums for localisation
 enum LocalizationKey: String {
     // enum value = Key of string
@@ -72,6 +79,10 @@ enum LocalizationKey: String {
     }
 }
 
+struct carInfoItem {
+    var title:String?
+    var value:String?
+}
 
 let kImageColor = UIColor.init(red: 16.0/255.0, green: 191.0/255.0, blue: 212.0/255.0, alpha: 1.0)
 let kTextColor = UIColor.init(red: 255.0/255.0, green: 179.0/255.0, blue: 57.0/255.0, alpha: 1.0)
