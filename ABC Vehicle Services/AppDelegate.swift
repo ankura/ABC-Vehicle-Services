@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     
+    // method to register/ask for push notification
     func registerForPushNotifications() {
       
         UNUserNotificationCenter.current()
@@ -86,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       Common.LogDebug("Failed to register: \(error)")
     }
     
+    // Google's sign in method to login with Google
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
         var msg: String = ""
@@ -98,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 msg = error.localizedDescription
             }
             
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["errorText": "\(msg)"])
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "GoggleAuthUINotification"), object: nil, userInfo: ["errorText": "\(msg)"])
             
             return
         }
@@ -112,15 +114,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let email = user.profile.email
         // ...
         Preferences.userID(value:email!)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["statusText": "Signed in user:\n\(fullName!)"])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "GoggleAuthUINotification"), object: nil, userInfo: ["statusText": "Signed in user:\n\(fullName!)"])
     }
     
-    
+    // Method to handle if user disconnected from Google
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {
       // Perform any operations when the user disconnects from app here.
       // ...
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["errorText": "User has disconnected."])
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "GoggleAuthUINotification"), object: nil, userInfo: ["errorText": "User has disconnected."])
     }
 
 

@@ -4,7 +4,7 @@
 //
 //  Created by Ankur Agarwal on 11/08/20.
 //  Copyright © 2020 Ankur Agarwal. All rights reserved.
-//
+// Class to draw/view Service Status of Car
 
 import Foundation
 import UIKit
@@ -22,7 +22,7 @@ class ServicingStatusTableView: UIView, UITableViewDataSource, UITableViewDelega
     
     /// array to draw table
     var serviceItems: Array<ServiceStatusItem> = []
-    var serviceStatus: servicingStatus = .no_active_servicing
+    var serviceStatus: servicingStatus = .no_active_servicing // status if servicing or not
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -38,6 +38,7 @@ class ServicingStatusTableView: UIView, UITableViewDataSource, UITableViewDelega
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Method to set up the UI
     func setup() {
         
         serviceStatusView.backgroundColor = .clear
@@ -72,6 +73,7 @@ class ServicingStatusTableView: UIView, UITableViewDataSource, UITableViewDelega
         tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     }
     
+    // Method to show status string
     func showCombindStatus() {
         
         var msg = LocalizationKey.service_status_str.string
@@ -142,6 +144,7 @@ class ServicingStatusTableView: UIView, UITableViewDataSource, UITableViewDelega
         mainStatuslabel.attributedText = attributedString
     }
     
+    // Method to reload table
     @objc func reloadData() {
         
         tableView.reloadData()
@@ -150,7 +153,7 @@ class ServicingStatusTableView: UIView, UITableViewDataSource, UITableViewDelega
         refreshControl.endRefreshing()
     }
     
-    
+    // MARK: Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return serviceItems.count
     }

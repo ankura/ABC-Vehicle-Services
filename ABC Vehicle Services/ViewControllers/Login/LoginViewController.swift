@@ -200,7 +200,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //orLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
         orLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
         orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        //orLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         let leftLineview = UIView()
         leftLineview.backgroundColor = .gray
@@ -258,16 +257,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Automatically sign in the user.
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.receiveToggleAuthUINotification(_:)), name: NSNotification.Name(rawValue: "ToggleAuthUINotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.receiveGoggleAuthUINotification(_:)), name: NSNotification.Name(rawValue: "GoggleAuthUINotification"), object: nil)
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
             drawUI()
     }
     
+    
+    // Method to add various UI component on View/Scroll View
     func addUI() {
         
         self.view.addSubview(self.scrollView)
@@ -307,6 +307,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.scrollView.addSubview(self.googleLoginButton)
     }
     
+    
+    // Method to draw UI on screen based on device type and orientation
     func drawUI() {
             
         //setup scroll view
@@ -476,6 +478,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    /// Method which notifies the container that the size of its view is about to change.
    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 
         coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in
@@ -485,7 +488,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.drawUI()
         })
         super.viewWillTransition(to: size, with: coordinator)
-
     }
     
     
@@ -507,24 +509,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //MARK: -
     
     
+    // Method when user click on remember me check box
     @objc func rememberMe() {
         Common.LogDebug("Remeber Me Tappped")
     }
     
+    // Method when user click on remember me Label
     @objc func rememberMeTapped(_ sender: UITapGestureRecognizer) {
         Common.LogDebug("Remeber Me Label Tappped")
         self.rememberMeCheckBox.isChecked = !self.rememberMeCheckBox.isChecked
     }
     
-    
+    // TODO: - Implement Forgot password module
+    // Method when user click on Forgot password label
     @objc func forgotPassTapped(_ sender: UITapGestureRecognizer) {
         Common.LogDebug("Forgot Password Tappped")
     }
+    // TODO: -
     
-    
+    // TODO: - Implement Login with service
+    // Method when user click on Login button
     @objc func loginTapped() {
         Common.LogDebug("Loggin Tappped")
         
+        // validate email and password field
         var msg: String = ""
         if(!self.emailTextField.hasText) {
             msg = LocalizationKey.email_empty_str.string
@@ -536,12 +544,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             msg = LocalizationKey.pass_notvalid_str.string
         }
         
+        // if everything is ok. Process login by hitting the serive
         if(msg.isEmpty) {
             if(self.rememberMeCheckBox.isChecked) {
                 Preferences.rememberMe(answer: "yes")
             } else {
                 Preferences.rememberMe(answer: "no")
             }
+            
             Preferences.LoginMe(answer: "yes")
             Preferences.userID(value:self.emailTextField.text!)
             Preferences.MD5Password(value: Common.md5(self.passwordTextField.text!))
@@ -551,17 +561,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             self.showAlert(title: LocalizationKey.alert_title_error.string, message: msg, actionTitle: LocalizationKey.alert_ok.string)
         }
-        
     }
+    // TODO: -
     
+    
+    // Method when user click on Login with Google
     @objc func googleLoginTapped() {
         Common.LogDebug("Google Loggin Tappped")
         GIDSignIn.sharedInstance().signIn()
     }
     
-
-    @objc func receiveToggleAuthUINotification(_ notification: NSNotification) {
-      if notification.name.rawValue == "ToggleAuthUINotification" {
+    // Notification to handle Google login mechanism
+    @objc func receiveGoggleAuthUINotification(_ notification: NSNotification) {
+      if notification.name.rawValue == "GoggleAuthUINotification" {
         if notification.userInfo != nil {
           guard let userInfo = notification.userInfo as? [String:String] else { return }
             
@@ -587,7 +599,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
       }
     }
     
-    
+    // Method to show Home screen
     func showHomeVC() {
         
         // move to home screen
@@ -609,7 +621,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     deinit {
-      NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ToggleAuthUINotification"), object: nil)
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "GoggleAuthUINotification"), object: nil)
     }
     
 

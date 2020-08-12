@@ -50,14 +50,14 @@ class ServiceStatusCell: UITableViewCell {
         
     }
     
-    let containerView:UIView = {
+    private let containerView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true // this will make sure its children do not go out of the boundary
         return view
     }()
     
-    let serviceItemImageView:UIImageView = {
+    private let serviceItemImageView:UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFit // image will never be strecthed vertially or horizontally
         img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
@@ -65,7 +65,7 @@ class ServiceStatusCell: UITableViewCell {
         return img
     }()
     
-    let serviceItemTitleLabel:UILabel = {
+    private let serviceItemTitleLabel:UILabel = {
         let label = UILabel()
         var size: CGFloat = 18.0
         if(!Common.isPhone()) {
@@ -77,7 +77,7 @@ class ServiceStatusCell: UITableViewCell {
         return label
     }()
     
-    let serviceItemStatusLabel:UILabel = {
+    private let serviceItemStatusLabel:UILabel = {
         let label = UILabel()
         var size: CGFloat = 15.0
         if(!Common.isPhone()) {
@@ -90,7 +90,7 @@ class ServiceStatusCell: UITableViewCell {
         return label
     }()
     
-    let serviceItemTimeLabel:UILabel = {
+    private let serviceItemTimeLabel:UILabel = {
         let label = UILabel()
         var size: CGFloat = 15.0
         if(!Common.isPhone()) {

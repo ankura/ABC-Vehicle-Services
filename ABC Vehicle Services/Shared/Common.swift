@@ -4,6 +4,7 @@
 //
 //  Created by Ankur Agarwal on 07/08/20.
 //  Copyright © 2020 Ankur Agarwal. All rights reserved.
+/// Common class is used to common operations performed across the app
 
 
 import Foundation
@@ -12,7 +13,6 @@ import os
 import SwiftyJSON
 import CommonCrypto
 
-/// Common class is used to common operations performed across the app
 class Common: NSObject {
     
     /// method to log "Info" type of string. Use this level to capture information that may be helpful, but isn’t essential
@@ -202,14 +202,18 @@ class Common: NSObject {
         return str
     }
     
-    
+    /// Convert params json string into  string
+    /// - Parameter describing: JSON string
+    /// - Returns:  string
     class func getJsonString(describing: JSON?) ->String {
         var str : String = ""
         str = String(describing: describing)
         return str
     }
     
-    
+    /// Method to get font size depending upon screen width
+    /// - Parameter size: input font size
+    /// - Returns:  CGFloat: font as per screen dimension.
     class func dynamicFontSize(_ size: CGFloat) -> CGFloat {
         let screenWidth = UIScreen.main.bounds.size.width
         var calculatedFontSize = (screenWidth / 600) * size
@@ -219,7 +223,8 @@ class Common: NSObject {
         return calculatedFontSize
     }
     
-    
+    /// Method to return device family
+    /// - Returns:  Bool: True if iPhone family else False
     class func isPhone() -> Bool {
         if(UIDevice.current.userInterfaceIdiom == .phone) {
             return true
@@ -228,6 +233,8 @@ class Common: NSObject {
         }
     }
     
+    /// Method to return device orientation
+    /// - Returns:  Bool: True if potrait else False
     class func isPotrait() -> Bool {
         
         let orient = UIApplication.shared.statusBarOrientation
@@ -242,7 +249,9 @@ class Common: NSObject {
     }
     
     
-    // method to encrypt
+    /// Method to encrypt
+    /// - Parameter string: plain string
+    /// - Returns:  string: encrypted  string
     class func md5(_ string: String) -> String {
         let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)
         var digest = Array<UInt8>(repeating:0, count:Int(CC_MD5_DIGEST_LENGTH))
@@ -256,7 +265,7 @@ class Common: NSObject {
         return hexString
     }
     
-    
+    /// Method to reset values in case of logout
     class func logOutResetValue() {
         Preferences.LoginMe(answer: "no")
         Preferences.rememberMe(answer: "no")
@@ -363,26 +372,37 @@ extension UIViewController {
     }
 }
 
-// extension of String for localisation
+// extension of String
 extension String {
     
+    // Function for localisation
     func localized() -> String {
       let localizedString = NSLocalizedString(self, comment: "")
       return localizedString
     }
     
+    // Function to validate is string is valid email id or not
     func isValidEmail() -> Bool {
             NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}").evaluate(with: self)
     }
 }
 
+// extension of Mutable String
 extension NSMutableAttributedString {
 
+    // Function to set color to input attributed string
+    /// - Parameters:
+    ///   - textForAttribute: Atributed string
+    ///   - color: color to set for input string
     func setColorForText(textForAttribute: String, withColor color: UIColor) {
         let range: NSRange = self.mutableString.range(of: textForAttribute, options: .caseInsensitive)
         self.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
     }
     
+    // Function to set font to input attributed string
+    /// - Parameters:
+    ///   - textForAttribute: Atributed string
+    ///   - font: font to set for input string
     func setFontForText(textForAttribute: String, withFont font: UIFont) {
         let range: NSRange = self.mutableString.range(of: textForAttribute, options: .caseInsensitive)
         self.addAttribute(NSAttributedString.Key.font, value: font, range: range)
@@ -390,7 +410,10 @@ extension NSMutableAttributedString {
 
 }
 
+// extension of UITextField
 extension UITextField {
+    
+    // Function to set border at bottom of textfield
     func addBottomBorder(){
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
@@ -402,4 +425,5 @@ extension UITextField {
         }
         layer.addSublayer(bottomLine)
     }
+    
 }

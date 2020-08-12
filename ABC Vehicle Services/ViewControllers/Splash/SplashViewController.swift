@@ -33,6 +33,7 @@ class SplashViewController: UIViewController {
         sleep(2)
         
         // Do any additional setup after loading the view.
+        // if user is login and remember me is checked or if user uses Google's sign in
         if Preferences.isLoginMe() == "yes"
         {
             if(Preferences.isRememberMe() == "yes") {
@@ -40,24 +41,18 @@ class SplashViewController: UIViewController {
                 self.authenticationWithTouchID()
                 
             } else {
-                
-                let loginVC =  self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")as! LoginViewController
-                UIApplication.shared.windows.first?.rootViewController = loginVC
-                UIApplication.shared.windows.first?.makeKeyAndVisible()
-                
+                // navigate to login screen
+                showLoginVC()
             }
             
         } else {
-            
-            let loginVC =  self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")as! LoginViewController
-            UIApplication.shared.windows.first?.rootViewController = loginVC
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
-            
-            
+            // navigate to login screen
+            showLoginVC()
         }
         
     }
     
+    // Method to draw UI on screen based on device type and orientation
     func drawUI() {
         
         let guide = self.view.safeAreaLayoutGuide
@@ -75,6 +70,15 @@ class SplashViewController: UIViewController {
         
     }
     
+    
+    // Method to show login VC
+    func showLoginVC() {
+        let loginVC =  self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")as! LoginViewController
+        UIApplication.shared.windows.first?.rootViewController = loginVC
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
+    
+    // Method to show Home VC
     func showHomeVC() {
         
         // custom navigation bar color
@@ -92,7 +96,7 @@ class SplashViewController: UIViewController {
         
     }
     
-    
+    // Method to authenticate with biometric if 'remember me' is ON
     func authenticationWithTouchID() {
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = LocalizationKey.passcode_use_str.string

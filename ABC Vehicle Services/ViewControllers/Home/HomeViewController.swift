@@ -12,12 +12,10 @@ import SwiftyJSON
 import Toast_Swift
 import Alamofire
 
-let CAR_VIEW_TAG = 0100
-let CAR_IMG_TAG = 1001
-let CAR_LBL_TAG = 1002
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePanelViewControllerDelegate {
     
+    // add shadown on controller if slide pannel is open
     var currentState: slideOutState = .collapsed {
        didSet {
          let shouldShowShadow = currentState != .collapsed
@@ -26,9 +24,9 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
      }
     
     var leftViewController: SidePanelViewController?
-    let centerPanelExpandedOffset: CGFloat = 60
-    var carInfoList: Array<carInfoItem> = []
-    var carModel: carInfoItem?
+    let centerPanelExpandedOffset: CGFloat = 60 // How much panel should expand
+    var carInfoList: Array<carInfoItem> = [] // Array to store car information
+    var carModel: carInfoItem? // 
     var currentServicingStatus: servicingStatus = .no_active_servicing
     
     private let scrollView: UIScrollView = {
@@ -104,6 +102,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         return view
     }()
     
+    // Method to draw the car info panel
     func getCarInfoView(_ item: carInfoItem) -> UIView {
         let view = UIView()
         view.backgroundColor = .clear
@@ -142,6 +141,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     }
     
     
+    // method to draw upper portion which consist of car info and book service button
     func upperPortionView() {
         
         let dummyView = UIView()
@@ -154,7 +154,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         
         let cardetailView = UIView()
         cardetailView.backgroundColor = .clear
-        //cardetailView.tag = CAR_VIEW_TAG
         cardetailView.translatesAutoresizingMaskIntoConstraints = false
         self.carModelView.addSubview(cardetailView)
         
@@ -165,7 +164,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         
         let imageView = UIImageView()
         imageView.backgroundColor = .clear
-        //imageView.tag = CAR_IMG_TAG
         let image = UIImage(named: (self.carModel?.value)!)
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
@@ -179,7 +177,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
          let carlabel = UILabel()
         carlabel.text = self.carModel?.title//"Honda City"
          carlabel.backgroundColor = .clear
-         //carlabel.tag = CAR_LBL_TAG
          carlabel.frame = imageView.frame
          carlabel.font = UIFont.systemFont(ofSize: Common.dynamicFontSize(13), weight: UIFont.Weight.semibold)
          carlabel.textColor = .darkGray
@@ -208,7 +205,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     
     }
 
-    
+    // method to add car statistics in stackview
     func carInfoPortionView()  {
         
         var item = 0
@@ -223,11 +220,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         }
         carInfoView.addArrangedSubview(carInfoSubView1)
         carInfoView.addArrangedSubview(carInfoSubView2)
-        
-    }
-    
-    
-    func carServicingView() {
         
     }
     
@@ -262,11 +254,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         drawUI()
     }
     
-    
+    // Method to add various UI component on View/Scroll View
     func addUI() {
         
         self.view.addSubview(self.scrollView)
         
+        // TODO: - remove it if data is coming from service or local db
+        // added to select random values to show different cars, its info and service status from dummy data
         let randomCar = Int.random(in: 0..<3)
         let randomStats = Int.random(in: 0..<3)
         let randomService = true//Bool.random()
@@ -275,10 +269,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         //carModel = carInfoItem(title: "Honda City", value: "honda_car")
         let carData = CarAPI.getCarData()
         carModel = carInfoItem(title: carData[randomCar].carName, value: carData[randomCar].carImage)
-        self.upperPortionView()
-        self.scrollView.addSubview(self.carModelView)
-        
-        self.scrollView.addSubview(self.lineView1)
         
         /*carInfoList.append(carInfoItem(title: "KM Driven", value: "14765"))
         carInfoList.append(carInfoItem(title: "Fuel Level", value: "45 L"))
@@ -287,6 +277,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         carInfoList.append(carInfoItem(title: "Oil Level", value: "2.6L / 3L"))
         carInfoList.append(carInfoItem(title: "Battery Life", value: "Bad"))*/
         
+        // getting car statistics from dummy data. It should be replaced if data is coming from service or local db
         let carStats = StatsAPI.getStatsData()
         carInfoList.append(carInfoItem(title: LocalizationKey.km_driven_str.string, value: carStats[randomStats].kmDriven))
         carInfoList.append(carInfoItem(title: LocalizationKey.fuel_level_str.string, value: carStats[randomStats].fuelLevel))
@@ -295,11 +286,18 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         carInfoList.append(carInfoItem(title: LocalizationKey.oil_level_str.string, value: carStats[randomStats].oilLevel))
         carInfoList.append(carInfoItem(title: LocalizationKey.battery_life_str.string, value: carStats[randomStats].batteryLife))
         
+        // TODO:-
+        self.upperPortionView()
+        self.scrollView.addSubview(self.carModelView)
+        
+        self.scrollView.addSubview(self.lineView1)
+        
         self.carInfoPortionView()
         self.scrollView.addSubview(self.carInfoView)
         
         self.scrollView.addSubview(self.lineView2)
         
+        // if vehicle is in servicing or not
         if(randomService) {
             
             self.servicingStatusView.serviceStatus = .active_servicing
@@ -328,6 +326,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
 
     }
     
+    
+    // Method to draw UI on screen based on device type and orientation
     func drawUI() {
         
         //setup scroll view
@@ -370,6 +370,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         } else if(!Common.isPhone() && Common.isPotrait()) {
             val = 8
         }
+        
         lineView2.topAnchor.constraint(equalTo: carInfoView.bottomAnchor, constant: 50-val).isActive = true
         lineView2.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: 10).isActive = true
         lineView2.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -10).isActive = true
@@ -378,13 +379,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         servicingStatusView.topAnchor.constraint(equalTo: self.lineView2.bottomAnchor, constant: 10).isActive = true
         servicingStatusView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: 5).isActive = true
         servicingStatusView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -5).isActive = true
-        //servicingStatusView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         servicingStatusView.heightAnchor.constraint(equalToConstant: 450).isActive = true
         servicingStatusView.reloadData()
         
         
-        print(self.view.frame)
-        print(scrollView.contentSize)
         let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in
             rect = rect.union(view.frame)
         }
@@ -393,49 +391,50 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         if(Common.isPhone() && !Common.isPotrait()) {
             val = 70.0
         }
-        print(contentRect.size)
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: (contentRect.size.height+val))
-        print(scrollView.contentSize)
         
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: (contentRect.size.height+val))
     }
     
     
     /// Method to handle click on menu button (left navigation)
     @objc private func menuButtonClicked() {
         
-        self.showAlert(title: LocalizationKey.alert_title_confirmation.string, message: LocalizationKey.logout_conf_str.string, actionTitle: LocalizationKey.alert_yes.string, secondTitle: LocalizationKey.alert_no.string, completion: { (success,val) -> Void in
-        if success {
-            if(val == 0) { // yes, go back
-                
-                Common.logOutResetValue()
-                let loginVC =  self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")as! LoginViewController
-                UIApplication.shared.windows.first?.rootViewController = loginVC
-                UIApplication.shared.windows.first?.makeKeyAndVisible()
-                
-            } else if (val == 1) { // no
-                
-                let notAlreadyExpanded = (self.currentState != .leftPanelExpanded)
-                if notAlreadyExpanded {
-                    self.addLeftPanelViewController()
-                }
-                self.animateLeftPanel(shouldExpand: notAlreadyExpanded)
-                
-            }
-        }})
+        let notAlreadyExpanded = (self.currentState != .leftPanelExpanded)
+        if notAlreadyExpanded {
+            self.addLeftPanelViewController()
+        }
+        self.animateLeftPanel(shouldExpand: notAlreadyExpanded)
+        
     }
     
     
     /// Method to handle click on notification button (right navigation)
+    // as of now it is behaving as logout button
     @objc private func notificationButtonClicked() {
         
+        self.showAlert(title: LocalizationKey.alert_title_confirmation.string, message: LocalizationKey.logout_conf_str.string, actionTitle: LocalizationKey.alert_yes.string, secondTitle: LocalizationKey.alert_no.string, completion: { (success,val) -> Void in
+            if success {
+                if(val == 0) { // yes, go back
+                    
+                    Common.logOutResetValue()
+                    let loginVC =  self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")as! LoginViewController
+                    UIApplication.shared.windows.first?.rootViewController = loginVC
+                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                    
+                } else if (val == 1) { // no
+                   // do if anything is required
+                }
+            }})
     }
     
     
     /// Method to handle click on book service button
     @objc private func bookServiceTapped() {
-        
+        // TODO: - Need to implement book service module
     }
     
+    
+    /// Method which notifies the container that the size of its view is about to change.
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 
         coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in
@@ -449,6 +448,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     }
     
     
+    // Method to add left panel
     func addLeftPanelViewController() {
         /*guard leftViewController == nil else { return }
 
@@ -459,6 +459,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
       }*/
     }
     
+    
+    // Method to animate left panel
     func animateLeftPanel(shouldExpand: Bool) {
       if shouldExpand {
         currentState = .leftPanelExpanded
@@ -473,6 +475,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
       }
     }
     
+    
+    // Method to animate
     func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)? = nil) {
       UIView.animate(withDuration: 0.5,
                      delay: 0,
@@ -484,6 +488,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
       }, completion: completion)
     }
     
+    
     // Method to show opacity when side menu is open
     func showShadowForCenterViewController(_ shouldShowShadow: Bool) {
       if shouldShowShadow {
@@ -493,12 +498,14 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
       }
     }
     
+    // Method to add child side panel
     func addChildSidePanelController(_ sidePanelController: SidePanelViewController) {
-      sidePanelController.delegate = self
+      /*sidePanelController.delegate = self
       view.insertSubview(sidePanelController.view, at: 0)
       addChild(sidePanelController)
-      sidePanelController.didMove(toParent: self)
+      sidePanelController.didMove(toParent: self)*/
     }
+    
     
     func leftSidePanelViewController() -> SidePanelViewController? {
         return self.storyboard?.instantiateViewController(withIdentifier: "SideVC")as? SidePanelViewController
@@ -541,7 +548,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     }
     
     // MARK:- SidePanelViewControllerDelegate delegate Method
-    
     func didSelectMenuItem(_ item: MenuItem) {
            //
        }

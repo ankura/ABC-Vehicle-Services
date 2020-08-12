@@ -4,7 +4,7 @@
 //
 //  Created by Ankur Agarwal on 12/08/20.
 //  Copyright © 2020 Ankur Agarwal. All rights reserved.
-//
+//  Class which will acts as data from service. Dummy data
 
 import Foundation
 
