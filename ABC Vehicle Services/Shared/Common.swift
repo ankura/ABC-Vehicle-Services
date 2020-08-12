@@ -12,6 +12,7 @@ import UIKit
 import os
 import SwiftyJSON
 import CommonCrypto
+import GoogleSignIn
 
 class Common: NSObject {
     
@@ -267,6 +268,7 @@ class Common: NSObject {
     
     /// Method to reset values in case of logout
     class func logOutResetValue() {
+        GIDSignIn.sharedInstance().signOut()
         Preferences.LoginMe(answer: "no")
         Preferences.rememberMe(answer: "no")
         Preferences.userID(value: "")
