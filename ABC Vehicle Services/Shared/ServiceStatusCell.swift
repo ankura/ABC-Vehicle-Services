@@ -67,7 +67,7 @@ class ServiceStatusCell: UITableViewCell {
     
     private let serviceItemTitleLabel:UILabel = {
         let label = UILabel()
-        var size: CGFloat = 18.0
+        var size: CGFloat = 17.0
         if(!Common.isPhone()) {
             size = Common.dynamicFontSize(15)
         }
@@ -137,13 +137,13 @@ class ServiceStatusCell: UITableViewCell {
         }
         
         containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
-        containerView.leadingAnchor.constraint(equalTo:self.serviceItemImageView.trailingAnchor, constant:10).isActive = true
-        containerView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant:-10).isActive = true
+        containerView.leadingAnchor.constraint(equalTo:self.serviceItemImageView.trailingAnchor, constant:8).isActive = true
+        containerView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant:-8).isActive = true
         containerView.heightAnchor.constraint(equalToConstant:size).isActive = true
         
         serviceItemTitleLabel.centerYAnchor.constraint(equalTo:self.containerView.centerYAnchor).isActive = true
         serviceItemTitleLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
-        serviceItemTitleLabel.widthAnchor.constraint(equalTo:self.containerView.widthAnchor, multiplier: 0.40).isActive = true
+        serviceItemTitleLabel.widthAnchor.constraint(equalTo:self.containerView.widthAnchor, multiplier: 0.42).isActive = true
         
         serviceItemTimeLabel.centerYAnchor.constraint(equalTo:self.containerView.centerYAnchor).isActive = true
         serviceItemTimeLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true

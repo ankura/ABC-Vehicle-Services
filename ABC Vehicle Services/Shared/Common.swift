@@ -31,20 +31,20 @@ class Common: NSObject {
         case .publicLevel:
             switch(logCateg) {
             case .ui:
-                os_log("ListView - %{public}@", log: .ui, type: .info, logDetails)
+                os_log("ABC Services - %{public}@", log: .ui, type: .info, logDetails)
             case .database:
-                os_log("ListView - %{public}@", log: .database, type: .info, logDetails)
+                os_log("ABC Services - %{public}@", log: .database, type: .info, logDetails)
             case .network:
-                os_log("ListView - %{public}@", log: .network, type: .info, logDetails)
+                os_log("ABC Services - %{public}@", log: .network, type: .info, logDetails)
             }
         case .privateLevel:
             switch(logCateg) {
             case .ui:
-                os_log("ListView - %{private}@", log: .ui, type: .info, logDetails)
+                os_log("ABC Services - %{private}@", log: .ui, type: .info, logDetails)
             case .database:
-                os_log("ListView - %{private}@", log: .database, type: .info, logDetails)
+                os_log("ABC Services - %{private}@", log: .database, type: .info, logDetails)
             case .network:
-                os_log("ListView - %{private}@", log: .network, type: .info, logDetails)
+                os_log("ABC Services - %{private}@", log: .network, type: .info, logDetails)
             }
         }
         
@@ -67,20 +67,20 @@ class Common: NSObject {
         case .publicLevel:
             switch(logCateg) {
             case .ui:
-                os_log("ListView - %{public}@", log: .ui, type: .error, logDetails)
+                os_log("ABC Services - %{public}@", log: .ui, type: .error, logDetails)
             case .database:
-                os_log("ListView - %{public}@", log: .database, type: .error, logDetails)
+                os_log("ABC Services - %{public}@", log: .database, type: .error, logDetails)
             case .network:
-                os_log("ListView - %{public}@", log: .network, type: .error, logDetails)
+                os_log("ABC Services - %{public}@", log: .network, type: .error, logDetails)
             }
         case .privateLevel:
             switch(logCateg) {
             case .ui:
-                os_log("ListView - %{private}@", log: .ui, type: .error, logDetails)
+                os_log("ABC Services - %{private}@", log: .ui, type: .error, logDetails)
             case .database:
-                os_log("ListView - %{private}@", log: .database, type: .error, logDetails)
+                os_log("ABC Services - %{private}@", log: .database, type: .error, logDetails)
             case .network:
-                os_log("ListView - %{private}@", log: .network, type: .error, logDetails)
+                os_log("ABC Services - %{private}@", log: .network, type: .error, logDetails)
             }
         }
     }
@@ -102,20 +102,20 @@ class Common: NSObject {
         case .publicLevel:
             switch(logCateg) {
             case .ui:
-                os_log("ListView - %{public}@", log: .ui, type: .debug, logDetails)
+                os_log("ABC Services - %{public}@", log: .ui, type: .debug, logDetails)
             case .database:
-                os_log("ListView - %{public}@", log: .database, type: .debug, logDetails)
+                os_log("ABC Services - %{public}@", log: .database, type: .debug, logDetails)
             case .network:
-                os_log("ListView - %{public}@", log: .network, type: .debug, logDetails)
+                os_log("ABC Services - %{public}@", log: .network, type: .debug, logDetails)
             }
         case .privateLevel:
             switch(logCateg) {
             case .ui:
-                os_log("ListView - %{private}@", log: .ui, type: .debug, logDetails)
+                os_log("ABC Services - %{private}@", log: .ui, type: .debug, logDetails)
             case .database:
-                os_log("ListView - %{private}@", log: .database, type: .debug, logDetails)
+                os_log("ABC Services - %{private}@", log: .database, type: .debug, logDetails)
             case .network:
-                os_log("ListView - %{private}@", log: .network, type: .debug, logDetails)
+                os_log("ABC Services - %{private}@", log: .network, type: .debug, logDetails)
             }
         }
     }

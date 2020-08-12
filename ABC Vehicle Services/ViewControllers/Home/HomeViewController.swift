@@ -389,7 +389,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         
         val = 0.0
         if(Common.isPhone() && !Common.isPotrait()) {
-            val = 70.0
+            val = 80.0
         }
         
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: (contentRect.size.height+val))

@@ -59,10 +59,10 @@ class StatsAPI {
 class ServiceStatusAPI {
     static func getServiceStatus() -> [carServiceStatus]{
      let status = [
-        carServiceStatus(oilChange: .not_started_servicing, oilChangeTime: "(10:30 am)", brakeOil: .not_started_servicing, brakeOilTime: "(11:15 am)", filterChange: .not_started_servicing, filterChangeTime: "(12:30 pm)", batteryCheck: .not_started_servicing, batteryCheckTime: "(02:00 pm)"),
-        carServiceStatus(oilChange: .completed_servicing, oilChangeTime: "(12:30 pm)", brakeOil: .completed_servicing, brakeOilTime: "(02:00 pm)", filterChange: .in_progress_servicing, filterChangeTime: "(03:00 pm)", batteryCheck: .in_progress_servicing, batteryCheckTime: "(04:00 pm)"),
-        carServiceStatus(oilChange: .completed_servicing, oilChangeTime: "(10:00 pm)", brakeOil: .in_progress_servicing, brakeOilTime: "(11:00 am)", filterChange: .in_progress_servicing, filterChangeTime: "(12:30 pm)", batteryCheck: .not_started_servicing, batteryCheckTime: "(02:30 pm)"),
-        carServiceStatus(oilChange: .completed_servicing, oilChangeTime: "(01:00 pm)", brakeOil: .completed_servicing, brakeOilTime: "(02:15 pm)", filterChange: .completed_servicing, filterChangeTime: "(04:00 pm)", batteryCheck: .in_progress_servicing, batteryCheckTime: "(06:00 pm)"),
+        carServiceStatus(oilChange: .not_started_servicing, oilChangeTime: "(10:30 am)", brakeOil: .not_started_servicing, brakeOilTime: "(11:15 am)", filterChange: .not_started_servicing, filterChangeTime: "(12:30 pm)", batteryCheck: .not_started_servicing, batteryCheckTime: "(02:10 pm)"),
+        carServiceStatus(oilChange: .completed_servicing, oilChangeTime: "(12:30 pm)", brakeOil: .completed_servicing, brakeOilTime: "(02:15 pm)", filterChange: .in_progress_servicing, filterChangeTime: "(03:10 pm)", batteryCheck: .in_progress_servicing, batteryCheckTime: "(04:15 pm)"),
+        carServiceStatus(oilChange: .completed_servicing, oilChangeTime: "(10:10 am)", brakeOil: .in_progress_servicing, brakeOilTime: "(11:15 am)", filterChange: .in_progress_servicing, filterChangeTime: "(12:30 pm)", batteryCheck: .not_started_servicing, batteryCheckTime: "(02:10 pm)"),
+        carServiceStatus(oilChange: .completed_servicing, oilChangeTime: "(01:10 pm)", brakeOil: .completed_servicing, brakeOilTime: "(02:15 pm)", filterChange: .completed_servicing, filterChangeTime: "(03:15 pm)", batteryCheck: .in_progress_servicing, batteryCheckTime: "(05:10 pm)"),
       ]
      return status
     }
