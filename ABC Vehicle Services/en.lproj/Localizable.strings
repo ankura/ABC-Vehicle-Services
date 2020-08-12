@@ -34,6 +34,16 @@
 "COMPLETED_STR" = "Completed";
 "GOOGLE_SIGN_ISSUE_STR" = "The user has not signed in before or they have since signed out.";
 "LOGOUT_CONF_STR" = "Do you want to Logout?";
+"KM_DRIVEN_STR" = "KM Driven";
+"FUEL-LEVEL_STR" = "Fuel Level";
+"TYRE_THREAD_STR" = "Tyre Thread";
+"ENGINE_HEALTH_STR" = "Engine Health";
+"OIL_LEVEL_STR" = "Oil Level";
+"BATTERY_LIFE_STR" = "Battery Life";
+"OIL_CHANGE_STR" = "Oil Change";
+"BRAKE_OIL_STR" = "Brake Oil";
+"OIL_FILTER_STR" = "Oil Filter";
+"BATTERY_CHECK_STR" = "Battery Check";
 
 
 "ALERT_TITLE_FAIL" = "Fail";
@@ -53,3 +63,7 @@
 "BOOK_SERVICE_IMG" = "book_service";
 "MENU_IMG" = "menu";
 "NOTIFICATION_IMG" = "notification";
+"SERVICE_OIL_IMG" = "service_oil";
+"SERVICE_BREAK_OIL_IMG" = "service_break_oil";
+"SERVICE_FILTER_IMG" = "service_filter";
+ "SERVICE_BATTERY_IMG" = "service_battery";

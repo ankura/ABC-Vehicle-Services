@@ -78,7 +78,17 @@ enum LocalizationKey: String {
     case completed_str = "COMPLETED_STR"
     case google_sign_issue_str = "GOOGLE_SIGN_ISSUE_STR"
     case logout_conf_str = "LOGOUT_CONF_STR"
-    
+    case km_driven_str = "KM_DRIVEN_STR"
+    case fuel_level_str = "FUEL-LEVEL_STR"
+    case tyre_thread_str = "TYRE_THREAD_STR"
+    case engine_health_str = "ENGINE_HEALTH_STR"
+    case oil_level_str = "OIL_LEVEL_STR"
+    case battery_life_str = "BATTERY_LIFE_STR"
+    case oil_change_str = "OIL_CHANGE_STR"
+    case brake_oil_str = "BRAKE_OIL_STR"
+    case oil_filter_str = "OIL_FILTER_STR"
+    case battery_check_str = "BATTERY_CHECK_STR"
+
     
     case alert_title_fail = "ALERT_TITLE_FAIL"
     case alert_title_error = "ALERT_TITLE_ERROR"
@@ -96,6 +106,10 @@ enum LocalizationKey: String {
     case img_book_service = "BOOK_SERVICE_IMG"
     case img_menu = "MENU_IMG"
     case img_notification = "NOTIFICATION_IMG"
+    case img_service_oil = "SERVICE_OIL_IMG"
+    case img_service_break_oil = "SERVICE_BREAK_OIL_IMG"
+    case img_service_filer = "SERVICE_FILTER_IMG"
+    case img_service_battery = "SERVICE_BATTERY_IMG"
     
     
     

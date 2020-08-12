@@ -19,6 +19,7 @@
 		45430C5724E131A60093D04A /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45430C5624E131A60093D04A /* SidePanelViewController.swift */; };
 		45430C5924E2A6A40093D04A /* ServicingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45430C5824E2A6A40093D04A /* ServicingStatus.swift */; };
 		45430C5B24E2AFD20093D04A /* ServiceStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45430C5A24E2AFD20093D04A /* ServiceStatusCell.swift */; };
+		45430C5D24E345600093D04A /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45430C5C24E345600093D04A /* DummyData.swift */; };
 		454E48AA24DFE7FE003A68E4 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454E48A924DFE7FE003A68E4 /* CheckBox.swift */; };
 		456CA14B24DD3A91003CD702 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456CA14A24DD3A91003CD702 /* AppDelegate.swift */; };
 		456CA15224DD3A91003CD702 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456CA15024DD3A91003CD702 /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 		45430C5624E131A60093D04A /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		45430C5824E2A6A40093D04A /* ServicingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicingStatus.swift; sourceTree = "<group>"; };
 		45430C5A24E2AFD20093D04A /* ServiceStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatusCell.swift; sourceTree = "<group>"; };
+		45430C5C24E345600093D04A /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		454E48A924DFE7FE003A68E4 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		456CA14724DD3A91003CD702 /* ABC Vehicle Services.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ABC Vehicle Services.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		456CA14A24DD3A91003CD702 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				454E48A924DFE7FE003A68E4 /* CheckBox.swift */,
 				45430C5824E2A6A40093D04A /* ServicingStatus.swift */,
 				45430C5A24E2AFD20093D04A /* ServiceStatusCell.swift */,
+				45430C5C24E345600093D04A /* DummyData.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				45430C5724E131A60093D04A /* SidePanelViewController.swift in Sources */,
 				45430C5524E1319B0093D04A /* MenuItem.swift in Sources */,
 				45430C5924E2A6A40093D04A /* ServicingStatus.swift in Sources */,
+				45430C5D24E345600093D04A /* DummyData.swift in Sources */,
 				456CA14B24DD3A91003CD702 /* AppDelegate.swift in Sources */,
 				456CA1BC24DD80DC003CD702 /* LoginViewController.swift in Sources */,
 				45430C5B24E2AFD20093D04A /* ServiceStatusCell.swift in Sources */,

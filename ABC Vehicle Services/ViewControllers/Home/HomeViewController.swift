@@ -182,12 +182,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
          //carlabel.tag = CAR_LBL_TAG
          carlabel.frame = imageView.frame
          carlabel.font = UIFont.systemFont(ofSize: Common.dynamicFontSize(13), weight: UIFont.Weight.semibold)
-         carlabel.textColor = .gray
+         carlabel.textColor = .darkGray
          carlabel.textAlignment = .center
          carlabel.translatesAutoresizingMaskIntoConstraints = false
          cardetailView.addSubview(carlabel)
          
-        carlabel.topAnchor.constraint(equalTo: cardetailView.bottomAnchor, constant: -10).isActive = true
+        carlabel.topAnchor.constraint(equalTo: cardetailView.bottomAnchor, constant: -7).isActive = true
         carlabel.trailingAnchor.constraint(equalTo: cardetailView.trailingAnchor, constant: -35).isActive = true
               
         
@@ -267,30 +267,62 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         
         self.view.addSubview(self.scrollView)
         
-        carModel = carInfoItem(title: "Honda City", value: "honda_car")
+        let randomCar = Int.random(in: 0..<3)
+        let randomStats = Int.random(in: 0..<3)
+        let randomService = true//Bool.random()
+        let randomSerStat = Int.random(in: 0..<4)
+        
+        //carModel = carInfoItem(title: "Honda City", value: "honda_car")
+        let carData = CarAPI.getCarData()
+        carModel = carInfoItem(title: carData[randomCar].carName, value: carData[randomCar].carImage)
         self.upperPortionView()
         self.scrollView.addSubview(self.carModelView)
         
         self.scrollView.addSubview(self.lineView1)
         
-        carInfoList.append(carInfoItem(title: "KM Driven", value: "14765"))
+        /*carInfoList.append(carInfoItem(title: "KM Driven", value: "14765"))
         carInfoList.append(carInfoItem(title: "Fuel Level", value: "45 L"))
         carInfoList.append(carInfoItem(title: "Tyre Thread", value: "2 mm"))
         carInfoList.append(carInfoItem(title: "Engine Health", value: "Good"))
         carInfoList.append(carInfoItem(title: "Oil Level", value: "2.6L / 3L"))
-        carInfoList.append(carInfoItem(title: "Battery Life", value: "Bad"))
+        carInfoList.append(carInfoItem(title: "Battery Life", value: "Bad"))*/
+        
+        let carStats = StatsAPI.getStatsData()
+        carInfoList.append(carInfoItem(title: LocalizationKey.km_driven_str.string, value: carStats[randomStats].kmDriven))
+        carInfoList.append(carInfoItem(title: LocalizationKey.fuel_level_str.string, value: carStats[randomStats].fuelLevel))
+        carInfoList.append(carInfoItem(title: LocalizationKey.tyre_thread_str.string, value: carStats[randomStats].tyreThread))
+        carInfoList.append(carInfoItem(title: LocalizationKey.engine_health_str.string, value: carStats[randomStats].engineHealth))
+        carInfoList.append(carInfoItem(title: LocalizationKey.oil_level_str.string, value: carStats[randomStats].oilLevel))
+        carInfoList.append(carInfoItem(title: LocalizationKey.battery_life_str.string, value: carStats[randomStats].batteryLife))
+        
         self.carInfoPortionView()
         self.scrollView.addSubview(self.carInfoView)
         
         self.scrollView.addSubview(self.lineView2)
         
-        var serviceStatus: Array<ServiceStatusItem> = []
-        serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Change", serviceItemImage: "service_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(10:30 am)"))
-        serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Brake Oil", serviceItemImage: "service_break_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(11:30 am)"))
-        serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Filter", serviceItemImage: "service_filter", serviceItemStatus: .in_progress_servicing, serviceItemTime: "(12:10 pm)"))
-        serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Batter Check", serviceItemImage: "service_battery", serviceItemStatus: .not_started_servicing, serviceItemTime: "(01:00 pm)"))
-        self.servicingStatusView.serviceStatus = .active_servicing
-        self.servicingStatusView.serviceItems = serviceStatus
+        if(randomService) {
+            
+            self.servicingStatusView.serviceStatus = .active_servicing
+            
+            var serviceStatus: Array<ServiceStatusItem> = []
+            /*serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Change", serviceItemImage: "service_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(10:30 am)"))
+            serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Brake Oil", serviceItemImage: "service_break_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(11:30 am)"))
+            serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Filter", serviceItemImage: "service_filter", serviceItemStatus: .in_progress_servicing, serviceItemTime: "(12:10 pm)"))
+            serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Battery Check", serviceItemImage: "service_battery", serviceItemStatus: .not_started_servicing, serviceItemTime: "(01:00 pm)"))*/
+            
+            let serStats = ServiceStatusAPI.getServiceStatus()
+            
+            serviceStatus.append(ServiceStatusItem(serviceItemTitle: LocalizationKey.oil_change_str.string, serviceItemImage: LocalizationKey.img_service_oil.string, serviceItemStatus: serStats[randomSerStat].oilChange, serviceItemTime: serStats[randomSerStat].oilChangeTime))
+            serviceStatus.append(ServiceStatusItem(serviceItemTitle: LocalizationKey.brake_oil_str.string, serviceItemImage: LocalizationKey.img_service_break_oil.string, serviceItemStatus: serStats[randomSerStat].brakeOil, serviceItemTime: serStats[randomSerStat].brakeOilTime))
+            serviceStatus.append(ServiceStatusItem(serviceItemTitle: LocalizationKey.oil_filter_str.string, serviceItemImage: LocalizationKey.img_service_filer.string, serviceItemStatus: serStats[randomSerStat].filterChange, serviceItemTime: serStats[randomSerStat].filterChangeTime))
+            serviceStatus.append(ServiceStatusItem(serviceItemTitle: LocalizationKey.battery_check_str.string, serviceItemImage: LocalizationKey.img_service_battery.string, serviceItemStatus: serStats[randomSerStat].batteryCheck, serviceItemTime: serStats[randomSerStat].batteryCheckTime))
+            
+            self.servicingStatusView.serviceItems = serviceStatus
+        } else {
+            
+            self.servicingStatusView.serviceStatus = .no_active_servicing
+            
+        }
         self.servicingStatusView.showCombindStatus()
         self.scrollView.addSubview(self.servicingStatusView)
 
