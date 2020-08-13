@@ -57,7 +57,6 @@ class ServicingStatusTableView: UIView, UITableViewDataSource, UITableViewDelega
         serviceStatusView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         serviceStatusView.heightAnchor.constraint(equalToConstant: size).isActive = true
         
-        tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorColor = .darkGray
         

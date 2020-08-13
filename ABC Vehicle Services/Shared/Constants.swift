@@ -123,6 +123,11 @@ struct carInfoItem {
     var value:String?
 }
 
+struct carModel {
+  var carName:String?
+  var carImage:String?
+}
+
 struct ServiceStatusItem {
     var serviceItemTitle: String?
     var serviceItemImage: String?

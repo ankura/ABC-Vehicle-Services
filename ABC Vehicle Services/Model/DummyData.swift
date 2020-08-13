@@ -17,10 +17,6 @@ struct carStat {
     let batteryLife: String?
 }
 
-struct carDetails {
-  let carName:String?
-  let carImage:String?
-}
 
 struct carServiceStatus {
     let oilChange: servicingItemStatus
@@ -34,11 +30,11 @@ struct carServiceStatus {
 }
 
 class CarAPI {
- static func getCarData() -> [carDetails]{
+ static func getCarData() -> [carModel]{
    let details = [
-     carDetails(carName: "Honda City", carImage: "honda_car"),
-     carDetails(carName: "Ecosports", carImage: "ecosports_car"),
-     carDetails(carName: "Hyundai Creta", carImage: "creta_car")
+     carModel(carName: "Honda City", carImage: "honda_car"),
+     carModel(carName: "Ecosports", carImage: "ecosports_car"),
+     carModel(carName: "Hyundai Creta", carImage: "creta_car")
     ]
    return details
   }

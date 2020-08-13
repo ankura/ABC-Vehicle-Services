@@ -26,7 +26,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     var leftViewController: SidePanelViewController?
     let centerPanelExpandedOffset: CGFloat = 60 // How much panel should expand
     var carInfoList: Array<carInfoItem> = [] // Array to store car information
-    var carModel: carInfoItem? // 
+    var carDetail: carModel? //
     var currentServicingStatus: servicingStatus = .no_active_servicing
     
     private let scrollView: UIScrollView = {
@@ -164,7 +164,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         
         let imageView = UIImageView()
         imageView.backgroundColor = .clear
-        let image = UIImage(named: (self.carModel?.value)!)
+        let image = UIImage(named: (self.carDetail?.carImage)!)
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
         imageView.frame = CGRect(x: 0, y: 0, width: image!.size.width, height: image!.size.height)
@@ -175,7 +175,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         imageView.trailingAnchor.constraint(equalTo: cardetailView.trailingAnchor, constant: 0).isActive = true
         
          let carlabel = UILabel()
-        carlabel.text = self.carModel?.title//"Honda City"
+        carlabel.text = self.carDetail?.carName//"Honda City"
          carlabel.backgroundColor = .clear
          carlabel.frame = imageView.frame
          carlabel.font = UIFont.systemFont(ofSize: Common.dynamicFontSize(13), weight: UIFont.Weight.semibold)
@@ -268,14 +268,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
         
         //carModel = carInfoItem(title: "Honda City", value: "honda_car")
         let carData = CarAPI.getCarData()
-        carModel = carInfoItem(title: carData[randomCar].carName, value: carData[randomCar].carImage)
-        
-        /*carInfoList.append(carInfoItem(title: "KM Driven", value: "14765"))
-        carInfoList.append(carInfoItem(title: "Fuel Level", value: "45 L"))
-        carInfoList.append(carInfoItem(title: "Tyre Thread", value: "2 mm"))
-        carInfoList.append(carInfoItem(title: "Engine Health", value: "Good"))
-        carInfoList.append(carInfoItem(title: "Oil Level", value: "2.6L / 3L"))
-        carInfoList.append(carInfoItem(title: "Battery Life", value: "Bad"))*/
+        carDetail = carModel(carName: carData[randomCar].carName, carImage: carData[randomCar].carImage)
         
         // getting car statistics from dummy data. It should be replaced if data is coming from service or local db
         let carStats = StatsAPI.getStatsData()
@@ -303,10 +296,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
             self.servicingStatusView.serviceStatus = .active_servicing
             
             var serviceStatus: Array<ServiceStatusItem> = []
-            /*serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Change", serviceItemImage: "service_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(10:30 am)"))
-            serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Brake Oil", serviceItemImage: "service_break_oil", serviceItemStatus: .completed_servicing, serviceItemTime: "(11:30 am)"))
-            serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Oil Filter", serviceItemImage: "service_filter", serviceItemStatus: .in_progress_servicing, serviceItemTime: "(12:10 pm)"))
-            serviceStatus.append(ServiceStatusItem(serviceItemTitle: "Battery Check", serviceItemImage: "service_battery", serviceItemStatus: .not_started_servicing, serviceItemTime: "(01:00 pm)"))*/
             
             let serStats = ServiceStatusAPI.getServiceStatus()
             
@@ -434,6 +423,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
     }
     
     
+    // MARK: - Implementation for sliding view
+    
     /// Method which notifies the container that the size of its view is about to change.
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 
@@ -552,5 +543,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SidePan
            //
        }
     
+    // MARK:-
     // MARK:-
 }
